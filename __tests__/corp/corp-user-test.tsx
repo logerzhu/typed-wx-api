@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import {corpAPI, testUserid, testUserPhoneNumber} from '../config'
+import { corpAPI, testUserid, testUserPhoneNumber } from '../config'
 
 test('Test CorpUser API', async () => {
   const user = await corpAPI.getUser(testUserid)

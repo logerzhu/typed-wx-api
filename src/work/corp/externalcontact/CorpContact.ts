@@ -1,4 +1,4 @@
-import {BaseCorpAPI} from '../BaseCorpAPI'
+import { BaseCorpAPI } from '../BaseCorpAPI'
 
 export type FollowUser = {
   userid: string //添加了此外部联系人的企业成员userid

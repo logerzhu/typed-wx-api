@@ -6,8 +6,19 @@ export abstract class CorpJS extends BaseCorpAPI {
    * 获取jsapi_ticket
    * https://work.weixin.qq.com/api/doc#10029/附录1-JS-SDK使用权限签名算法
    */
-  getJsApiTicket() {
-    return this.request({ url: 'get_jsapi_ticket' })
+  getJsApiTicket(): Promise<{ ticket: string; expires_in: number }> {
+    return this.request({
+      url: 'get_jsapi_ticket'
+    })
+  }
+
+  getJsApiAgentTicket(): Promise<{ ticket: string; expires_in: number }> {
+    return this.request({
+      url: 'ticket/get',
+      params: {
+        type: 'agent_config'
+      }
+    })
   }
 
   /**
@@ -35,7 +46,7 @@ export abstract class CorpJS extends BaseCorpAPI {
     url,
     jsApiList
   }: {
-    debug: string
+    debug?: boolean
     url: string
     jsApiList: string[]
   }) {

@@ -1,4 +1,4 @@
-import {BaseAPI} from './BaseAPI'
+import { BaseAPI } from './BaseAPI'
 import FormData from 'form-data'
 
 export abstract class APIMedia extends BaseAPI {
@@ -14,10 +14,10 @@ export abstract class APIMedia extends BaseAPI {
     form.append('media', buffer, filename)
     const result = await this.request({
       method: 'post',
-      headers: {...form.getHeaders(), Accept: 'application/json'},
+      headers: { ...form.getHeaders(), Accept: 'application/json' },
       data: form,
       url: 'media/upload',
-      params: {type}
+      params: { type }
     })
     return {
       type: result.type as 'image' | 'voice' | 'video' | 'file',
@@ -34,7 +34,7 @@ export abstract class APIMedia extends BaseAPI {
     form.append('fieldNameHere', buffer, filename)
     const result = await this.request({
       method: 'post',
-      headers: {...form.getHeaders(), Accept: 'application/json'},
+      headers: { ...form.getHeaders(), Accept: 'application/json' },
       data: form,
       url: 'media/uploadimg'
     })
@@ -49,7 +49,7 @@ export abstract class APIMedia extends BaseAPI {
   async getMediaHD(mediaId: string) {
     const result = await this.request({
       url: 'media/get/jssdk',
-      params: {media_id: mediaId},
+      params: { media_id: mediaId },
       responseType: 'arraybuffer'
     })
     return result as Buffer
@@ -61,7 +61,7 @@ export abstract class APIMedia extends BaseAPI {
   async getMedia(mediaId: string) {
     const result = await this.request({
       url: 'media/get',
-      params: {media_id: mediaId},
+      params: { media_id: mediaId },
       responseType: 'arraybuffer'
     })
     return result as Buffer

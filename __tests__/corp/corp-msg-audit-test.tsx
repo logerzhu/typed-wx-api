@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import { chatCorpAPI,testRoomID } from '../config'
+import { chatCorpAPI, testRoomID } from '../config'
 
 test('Test CorpMsgAudit API', async () => {
   const room = await chatCorpAPI.getRoom(testRoomID)

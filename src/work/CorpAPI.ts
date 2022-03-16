@@ -8,7 +8,7 @@ import { CorpMsgTemplate } from './corp/externalcontact/CorpMsgTemplate'
 import { CorpContact } from './corp/externalcontact/CorpContact'
 import { CorpGroupChat } from './corp/externalcontact/CorpGroupChat'
 import { CorpMsgAudit } from './corp/CorpMsgAudit'
-import { APIConfig } from './api/BaseAPI'
+import { APIConfig, WxWorkAPIError } from './api/BaseAPI'
 import { BaseCorpAPI } from './corp/BaseCorpAPI'
 
 export interface CorpAPI
@@ -32,8 +32,10 @@ export class CorpAPI extends BaseCorpAPI {
   async resolveTicket(type: string) {
     if (type === 'jsapi') {
       return this.getJsApiTicket()
+    } else if (type === 'jsapi-agent') {
+      return this.getJsApiAgentTicket()
     }
-    return null
+    throw new WxWorkAPIError(`Unsupported ticket type: ${type}`, 500)
   }
 }
 

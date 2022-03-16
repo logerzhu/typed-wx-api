@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import { corpAPI ,testUserid, testExternalUserid} from '../config'
+import { corpAPI, testUserid, testExternalUserid } from '../config'
 
 test('Test CorpMsgTemplate', async () => {
   const newMsg = await corpAPI.addMsgTemplate({
