@@ -5,13 +5,13 @@ import { BaseCorpAPI } from './BaseCorpAPI'
  */
 export abstract class CorpMsgAudit extends BaseCorpAPI {
   /**
-   *
+   * 获取会话内容存档内部群信息
    */
-  async getRoom(roomID: string) {
+  async getRoom(roomid: string) {
     const result = await this.request({
       url: 'msgaudit/groupchat/get',
       data: {
-        roomid: roomID
+        roomid: roomid
       },
       method: 'post'
     })

@@ -4,16 +4,16 @@ import { TokenStorage } from '../AccessToken'
 import { TicketStorage } from '../Ticket'
 
 export abstract class BaseCorpAPI extends API {
-  readonly corpID: string
+  readonly corpid: string
   readonly corpSecret: string
 
   constructor(
-    config: { corpID: string; corpSecret: string } & APIConfig,
+    config: { corpid: string; corpSecret: string } & APIConfig,
     tokenStorage?: TokenStorage,
     ticketStorage?: TicketStorage
   ) {
     super(config, tokenStorage, ticketStorage)
-    this.corpID = config.corpID
+    this.corpid = config.corpid
     this.corpSecret = config.corpSecret
   }
 
@@ -21,7 +21,7 @@ export abstract class BaseCorpAPI extends API {
     const result = await this.request({
       url: 'gettoken',
       params: {
-        corpid: this.corpID,
+        corpid: this.corpid,
         corpsecret: this.corpSecret
       },
       ignoreAccessToken: true

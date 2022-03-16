@@ -1,11 +1,11 @@
 /* eslint-env jest */
-import { corpAPI ,testUserID, testExternalUserID} from '../config'
+import { corpAPI ,testUserid, testExternalUserid} from '../config'
 
 test('Test CorpMsgTemplate', async () => {
   const newMsg = await corpAPI.addMsgTemplate({
     text: { content: '你好' },
-    sender: testUserID,
-    external_userid: [testExternalUserID]
+    sender: testUserid,
+    external_userid: [testExternalUserid]
   })
   expect(newMsg.msgid != null).toBeTruthy()
   await new Promise((resolve, reject) => {

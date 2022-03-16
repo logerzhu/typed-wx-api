@@ -56,7 +56,6 @@ export abstract class BaseAPI {
     }
 
     try {
-      console.log('---opts---', opts)
       const res = await this.axiosInstance.request(opts)
       if (res.status < 200 || res.status > 204) {
         throw new WxWorkAPIError(

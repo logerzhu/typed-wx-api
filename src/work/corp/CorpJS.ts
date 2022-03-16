@@ -53,7 +53,7 @@ export abstract class CorpJS extends BaseCorpAPI {
     return {
       beta: true,
       debug: debug,
-      appId: this.corpID,
+      appId: this.corpid,
       timestamp: timestamp,
       nonceStr: nonceStr,
       signature: signature,
@@ -62,11 +62,11 @@ export abstract class CorpJS extends BaseCorpAPI {
   }
 
   async getAgentJsConfig({
-    agentID,
+    agentid,
     url,
     jsApiList
   }: {
-    agentID: string
+    agentid: string
     url: string
     jsApiList: string[]
   }) {
@@ -82,8 +82,8 @@ export abstract class CorpJS extends BaseCorpAPI {
     })
 
     return {
-      corpid: this.corpID, // 必填，企业微信的corpid，必须与当前登录的企业一致
-      agentid: agentID, // 必填，企业微信的应用id （e.g. 1000247）
+      corpid: this.corpid, // 必填，企业微信的corpid，必须与当前登录的企业一致
+      agentid: agentid, // 必填，企业微信的应用id （e.g. 1000247）
       timestamp: timestamp, // 必填，生成签名的时间戳
       nonceStr: nonceStr, // 必填，生成签名的随机串
       signature: signature, // 必填，签名，见附录-JS-SDK使用权限签名算法

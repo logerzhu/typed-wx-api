@@ -93,11 +93,11 @@ export abstract class CorpGroupChat extends BaseCorpAPI {
   /**
    * 客户群opengid转换
    */
-  async opengIDToChatID(opengID: string) {
+  async opengidToChatid(opengid: string) {
     const result = await this.request({
       method: 'post',
       url: 'externalcontact/opengid_to_chatid',
-      data: { opengid: opengID }
+      data: { opengid: opengid }
     })
     return result.chat_id
   }

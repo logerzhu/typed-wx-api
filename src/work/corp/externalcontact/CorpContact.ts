@@ -60,11 +60,11 @@ export abstract class CorpContact extends BaseCorpAPI {
   /**
    * 获取客户列表
    */
-  async getExternalContactList(userID: string) {
+  async getExternalContactList(userid: string) {
     const result = await this.request({
       url: 'externalcontact/list',
       params: {
-        userid: userID
+        userid: userid
       }
     })
     return result.external_userid as string[]
@@ -73,11 +73,11 @@ export abstract class CorpContact extends BaseCorpAPI {
   /**
    * 获取客户详情
    */
-  async getExternalContact(externalUserID: string) {
+  async getExternalContact(externalUserid: string) {
     const result = await this.request({
       url: 'externalcontact/get',
       params: {
-        external_userid: externalUserID
+        external_userid: externalUserid
       }
     })
     delete result.errcode
@@ -90,7 +90,7 @@ export abstract class CorpContact extends BaseCorpAPI {
       const res = await this.request({
         url: 'externalcontact/get',
         params: {
-          external_userid: externalUserID,
+          external_userid: externalUserid,
           cursor: cursor
         }
       })
@@ -103,7 +103,7 @@ export abstract class CorpContact extends BaseCorpAPI {
   /**
    * 批量获取客户详情
    */
-  async batchGetExternalContact(userIDs: string[]) {
+  async batchGetExternalContact(userids: string[]) {
     const data: {
       external_contact: ExternalContactUser
       follow_info: Omit<FollowUser, 'tags'> & { tag_id?: string[] }
@@ -115,7 +115,7 @@ export abstract class CorpContact extends BaseCorpAPI {
         method: 'post',
         url: 'externalcontact/batch/get_by_user',
         data: {
-          userid_list: userIDs
+          userid_list: userids
         }
       })
       data.push(...res.external_contact_list)

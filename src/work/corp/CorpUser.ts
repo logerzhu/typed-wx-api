@@ -1,7 +1,7 @@
 import { BaseCorpAPI } from './BaseCorpAPI'
 
 export type UserData = {
-  userid: string //成员UserID。对应管理端的帐号，企业内必须唯一。长度为1~64个字节。只能由数字、字母和“_-@.”四种字符组成，且第一个字符必须是数字或字母。系统进行唯一性检查时会忽略大小写。
+  userid: string //成员Userid。对应管理端的帐号，企业内必须唯一。长度为1~64个字节。只能由数字、字母和“_-@.”四种字符组成，且第一个字符必须是数字或字母。系统进行唯一性检查时会忽略大小写。
   name: string //成员名称。长度为1~64个utf8字符
   alias?: string //成员别名。长度1~64个utf8字符
   mobile?: string //手机号码。企业内必须唯一，mobile/email二者不能同时为空
@@ -13,7 +13,7 @@ export type UserData = {
   biz_mail?: string //企业邮箱。仅对开通企业邮箱的企业有效。长度6~64个字节，且为有效的企业邮箱格式。企业内必须唯一。未填写则系统会为用户生成默认企业邮箱（可修改一次）
   telephone?: string //座机。32字节以内，由纯数字、“-”、“+”或“,”组成。
   is_leader_in_dept?: 1 | 0 //个数必须和参数department的个数一致，表示在所在的部门内是否为部门负责人。1表示为部门负责人，0表示非部门负责人。在审批(自建、第三方)等应用里可以用来标识上级审批人
-  direct_leader?: string[] //直属上级UserID，设置范围为企业内成员，可以设置最多5个上级
+  direct_leader?: string[] //直属上级Userid，设置范围为企业内成员，可以设置最多5个上级
   avatar_mediaid?: string //成员头像的mediaid，通过素材管理接口上传图片获得的mediaid
   extattr?: {
     //自定义字段。自定义字段需要先在WEB管理端添加，见扩展属性添加方法，否则忽略未知属性的赋值。
@@ -50,6 +50,9 @@ export type ReadOnlyUserData = UserData & {
 }
 
 export abstract class CorpUser extends BaseCorpAPI {
+  /**
+   * 创建成员
+   */
   async createUser(data: WriteOnlyUserData) {
     await this.request({
       method: 'post',
@@ -59,63 +62,78 @@ export abstract class CorpUser extends BaseCorpAPI {
     return {}
   }
 
-  async getUser(userID: string) {
+  /**
+   * 读取成员
+   */
+  async getUser(userid: string) {
     const result = await this.request({
       url: 'user/get',
       params: {
-        userid: userID
+        userid: userid
       }
     })
     return result as ReadOnlyUserData
   }
 
+  /**
+   * 更新成员
+   */
   async updateUser(
-    userID: string,
+    userid: string,
     data: Omit<Partial<WriteOnlyUserData>, 'userid'>
   ) {
     await this.request({
       method: 'post',
       url: 'user/update',
-      data: Object.assign({ userid: userID }, data)
+      data: Object.assign({ userid: userid }, data)
     })
     return {}
   }
 
-  async deleteUser(userID: string) {
+  /**
+   * 删除成员
+   */
+  async deleteUser(userid: string) {
     await this.request({
       url: 'user/delete',
       params: {
-        userid: userID
+        userid: userid
       }
     })
     return {}
   }
 
-  async deleteUsers(userIDs: string[]) {
+  /**
+   * 批量删除成员
+   */
+  async deleteUsers(user_ids: string[]) {
     await this.request({
       method: 'post',
       url: 'user/batchdelete',
       data: {
-        useridlist: userIDs
+        useridlist: user_ids
       }
     })
     return {}
   }
 
+  /**
+   * 获取部门成员
+   */
   async getDepartmentSimpleList(
-    departmentID: string,
+    department_id: string,
     fetchChild?: 1 | 0 //是否递归获取子部门下面的成员：1-递归获取，0-只获取本部门
   ) {
     const result = await this.request({
       url: 'user/simplelist',
       params: {
-        department_id: departmentID,
+        department_id: department_id,
         fetch_child: fetchChild
       }
     })
     return (result.userlist as any[]).map((info) => {
       return {
-        userid: info.userid, //成员UserID。对应管理端的帐号
+        userid: info.userid, //成员Userid。对应管理端的帐号
         name: info.name, //成员名称，代开发自建应用需要管理员授权才返回；此字段从2019年12月30日起，对新创建第三方应用不再返回真实name，使用userid代替name，2020年6月30日起，对所有历史第三方应用不再返回真实name，使用userid代替name，后续第三方仅通讯录应用可获取，未返回名称的情况需要通过通讯录展示组件来展示名字
         department: info.department, //成员所属部门列表。列表项为部门ID，32位整型
         open_userid: info.open_userid //全局唯一。对于同一个服务商，不同应用获取到企业内同一个成员的open_userid是相同的，最多64个字节。仅第三方应用可获取
@@ -123,53 +141,62 @@ export abstract class CorpUser extends BaseCorpAPI {
     })
   }
 
+  /**
+   * 获取部门成员详情
+   */
   async getDepartmentUserList(
-    departmentID: string,
+    department_id: string,
     fetchChild?: 1 | 0 //是否递归获取子部门下面的成员：1-递归获取，0-只获取本部门)
   ) {
     const result = await this.request({
       url: 'user/list',
       params: {
-        department_id: departmentID,
+        department_id: department_id,
         fetch_child: fetchChild
       }
     })
     return result.userlist as ReadOnlyUserData[]
   }
 
-  async convertToOpenID(userID: string) {
+  /**
+   * userid转openid
+   */
+  async useridToOpenid(userid: string) {
     const result = await this.request({
       method: 'post',
       url: 'user/convert_to_openid',
       data: {
-        userid: userID
+        userid: userid
       }
     })
     return result.openid as string
   }
 
-  async convertToUserID(openID: string) {
+  /**
+   * openid转userid
+   */
+  async openidToUserid(openid: string) {
     const result = await this.request({
       method: 'post',
       url: 'user/convert_to_userid',
       data: {
-        openid: openID
+        openid: openid
       }
     })
     return result.userid as string
   }
 
-  async authSuccess(userID: string) {
+  async authSuccess(userid: string) {
     await this.request({
       url: 'user/authsucc',
       params: {
-        userid: userID
+        userid: userid
       }
     })
     return {}
   }
 
-  async getUserID(phoneNumber: string) {
+  async getUserid(phoneNumber: string) {
     const result = await this.request({
       method: 'post',
       url: 'user/getuserid',

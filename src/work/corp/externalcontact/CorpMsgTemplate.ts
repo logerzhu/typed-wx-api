@@ -117,7 +117,7 @@ export abstract class CorpMsgTemplate extends BaseCorpAPI {
     return groupMsgList
   }
 
-  async getGroupMsgTask(msgID: string) {
+  async getGroupMsgTask(msgid: string) {
     const sendList: MsgSendTask[] = []
     let cursor = undefined
     do {
@@ -127,7 +127,7 @@ export abstract class CorpMsgTemplate extends BaseCorpAPI {
       } = await this.request({
         method: 'post',
         url: 'externalcontact/get_groupmsg_task',
-        data: { msgid: msgID, cursor: cursor }
+        data: { msgid: msgid, cursor: cursor }
       })
       sendList.push(...result.task_list)
       cursor = result.next_cursor
@@ -135,7 +135,7 @@ export abstract class CorpMsgTemplate extends BaseCorpAPI {
     return sendList
   }
 
-  async getGroupMsgResult(msgID: string) {
+  async getGroupMsgResult(msgid: string) {
     const detailList: MsgSendResult[] = []
     let cursor = undefined
     do {
@@ -145,7 +145,7 @@ export abstract class CorpMsgTemplate extends BaseCorpAPI {
       } = await this.request({
         method: 'post',
         url: 'externalcontact/get_group_msg_result',
-        data: { msgid: msgID, cursor: cursor }
+        data: { msgid: msgid, cursor: cursor }
       })
       detailList.push(...result.detail_list)
       cursor = result.next_cursor
@@ -153,7 +153,7 @@ export abstract class CorpMsgTemplate extends BaseCorpAPI {
     return detailList
   }
 
-  async getGroupMsgSendResult(msgID: string, userID: string) {
+  async getGroupMsgSendResult(msgid: string, userid: string) {
     const sendList: MsgSendResult[] = []
     let cursor = undefined
     do {
@@ -163,7 +163,7 @@ export abstract class CorpMsgTemplate extends BaseCorpAPI {
       } = await this.request({
         method: 'post',
         url: 'externalcontact/get_groupmsg_send_result',
-        data: { msgid: msgID, userid: userID, cursor: cursor }
+        data: { msgid: msgid, userid: userid, cursor: cursor }
       })
       sendList.push(...result.send_list)
       cursor = result.next_cursor
