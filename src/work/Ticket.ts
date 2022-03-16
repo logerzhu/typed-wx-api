@@ -12,13 +12,13 @@ export class Ticket {
   }
 }
 
-export abstract class TicketStorage {
-  abstract load(type: string): Promise<Ticket | null>
+export interface TicketStorage {
+  load(type: string): Promise<Ticket | null>
 
-  abstract save(type: string, ticket: Ticket | null): Promise<void>
+  save(type: string, ticket: Ticket | null): Promise<void>
 }
 
-export class MemoryTicketStorage extends TicketStorage {
+export class MemoryTicketStorage implements TicketStorage {
   private ticketStore: { [type: string]: Ticket } = {}
 
   async load(type: string) {

@@ -12,13 +12,13 @@ export class AccessToken {
   }
 }
 
-export abstract class TokenStorage {
-  abstract load(): Promise<AccessToken | null>
+export interface TokenStorage {
+  load(): Promise<AccessToken | null>
 
-  abstract save(token: AccessToken | null): Promise<void>
+  save(token: AccessToken | null): Promise<void>
 }
 
-export class MemoryTokenStorage extends TokenStorage {
+export class MemoryTokenStorage implements TokenStorage {
   private token: AccessToken | null = null
 
   async load() {
