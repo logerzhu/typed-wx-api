@@ -14,7 +14,6 @@ export type UserData = {
   telephone?: string //座机。32字节以内，由纯数字、“-”、“+”或“,”组成。
   is_leader_in_dept?: 1 | 0 //个数必须和参数department的个数一致，表示在所在的部门内是否为部门负责人。1表示为部门负责人，0表示非部门负责人。在审批(自建、第三方)等应用里可以用来标识上级审批人
   direct_leader?: string[] //直属上级Userid，设置范围为企业内成员，可以设置最多5个上级
-  avatar_mediaid?: string //成员头像的mediaid，通过素材管理接口上传图片获得的mediaid
   extattr?: {
     //自定义字段。自定义字段需要先在WEB管理端添加，见扩展属性添加方法，否则忽略未知属性的赋值。
     attrs: {
@@ -37,12 +36,14 @@ export type UserData = {
   main_department?: string //主部门
 }
 export type WriteOnlyUserData = UserData & {
+  avatar_mediaid?: string //成员头像的mediaid，通过素材管理接口上传图片获得的mediaid
   enable?: 1 | 0 //启用/禁用成员。1表示启用成员，0表示禁用成员
   to_invite?: boolean //是否邀请该成员使用企业微信（将通过微信服务通知或短信或邮件下发邀请，每天自动下发一次，最多持续3个工作日），默认值为true。
   nickname?: string //视频号名字（设置后，成员将对外展示该视频号）。须从企业绑定到企业微信的视频号中选择，可在“我的企业”页中查看绑定的视频号
 }
 
 export type ReadOnlyUserData = UserData & {
+  avatar?: string //头像url。 第三方仅通讯录应用可获取；对于非第三方创建的成员，第三方通讯录应用也不可获取；上游企业不可获取下游企业成员该字段
   thumb_avatar?: string //头像缩略图url。第三方仅通讯录应用可获取；对于非第三方创建的成员，第三方通讯录应用也不可获取；上游企业不可获取下游企业成员该字段
   status?: 1 | 2 | 4 | 5 //激活状态: 1=已激活，2=已禁用，4=未激活，5=退出企业。已激活代表已激活企业微信或已关注微信插件（原企业号）。未激活代表既未激活企业微信又未关注微信插件（原企业号）。
   qr_code?: string //员工个人二维码，扫描可添加为外部联系人(注意返回的是一个url，可在浏览器上打开该url以展示二维码)；第三方仅通讯录应用可获取；对于非第三方创建的成员，第三方通讯录应用也不可获取；上游企业不可获取下游企业成员该字段

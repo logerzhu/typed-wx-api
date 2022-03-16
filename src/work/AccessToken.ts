@@ -10,6 +10,18 @@ export class AccessToken {
   isValid() {
     return !!this.accessToken && Date.now() < this.expireTime
   }
+
+  toJSON() {
+    return { accessToken: this.accessToken, expireTime: this.expireTime }
+  }
+
+  static fromJSON(value: any) {
+    if (value?.accessToken && value?.expireTime) {
+      return new AccessToken(value.accessToken, value.expireTime)
+    } else {
+      return null
+    }
+  }
 }
 
 export interface TokenStorage {

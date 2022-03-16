@@ -22,7 +22,11 @@ export interface CorpAPI
 
 export class CorpAPI extends BaseCorpAPI {
   constructor(
-    config: { corpid: string; corpSecret: string } & APIConfig,
+    config: {
+      corpid: string
+      corpSecret: string
+      agentid?: string
+    } & APIConfig,
     tokenStorage?: TokenStorage,
     ticketStorage?: TicketStorage
   ) {

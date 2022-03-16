@@ -10,6 +10,18 @@ export class Ticket {
   isValid() {
     return !!this.ticket && Date.now() < this.expireTime
   }
+
+  toJSON() {
+    return { ticket: this.ticket, expireTime: this.expireTime }
+  }
+
+  static fromJSON(value: any) {
+    if (value?.ticket && value?.expireTime) {
+      return new Ticket(value.ticket, value.expireTime)
+    } else {
+      return null
+    }
+  }
 }
 
 export interface TicketStorage {

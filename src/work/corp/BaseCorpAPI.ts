@@ -6,15 +6,21 @@ import { TicketStorage } from '../Ticket'
 export abstract class BaseCorpAPI extends API {
   readonly corpid: string
   readonly corpSecret: string
+  readonly agentid?: string
 
   constructor(
-    config: { corpid: string; corpSecret: string } & APIConfig,
+    config: {
+      corpid: string
+      corpSecret: string
+      agentid?: string
+    } & APIConfig,
     tokenStorage?: TokenStorage,
     ticketStorage?: TicketStorage
   ) {
     super(config, tokenStorage, ticketStorage)
     this.corpid = config.corpid
     this.corpSecret = config.corpSecret
+    this.agentid = config.agentid
   }
 
   async resolveAccessToken() {
