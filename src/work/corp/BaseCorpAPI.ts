@@ -1,7 +1,7 @@
 import { API } from '../API'
 import { APIConfig } from '../api/BaseAPI'
-import { TokenStorage } from '../AccessToken'
-import { TicketStorage } from '../Ticket'
+import { TokenStorage } from '../common/AccessToken'
+import { TicketStorage } from '../common/Ticket'
 
 export abstract class BaseCorpAPI extends API {
   readonly corpid: string

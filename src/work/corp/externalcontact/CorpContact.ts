@@ -144,3 +144,70 @@ export abstract class CorpContact extends BaseCorpAPI {
     return {}
   }
 }
+
+//定义回调消息类型格式
+declare module '../../CorpCrypto' {
+  export interface CorpEvents {
+    /**
+     * 添加企业客户事件
+     * https://developer.work.weixin.qq.com/document/path/92130
+     */
+    event_change_external_contact_add_external_contact: {
+      ToUserName: string
+      FromUserName: 'sys'
+      CreateTime: string
+      MsgType: 'event'
+      Event: 'change_external_contact'
+      ChangeType: 'add_external_contact'
+      UserID: string
+      ExternalUserID: string
+      State?: string
+      WelcomeCode?: string
+    }
+    /**
+     * 编辑企业客户事件
+     * https://developer.work.weixin.qq.com/document/path/92130
+     */
+    event_change_external_contact_edit_external_contact: {
+      ToUserName: string
+      FromUserName: 'sys'
+      CreateTime: string
+      MsgType: 'event'
+      Event: 'change_external_contact'
+      ChangeType: 'edit_external_contact'
+      UserID: string
+      ExternalUserID: string
+    }
+    /**
+     * 外部联系人免验证添加成员事件
+     * https://developer.work.weixin.qq.com/document/path/92130
+     */
+    event_change_external_contact_add_half_external_contact: {
+      ToUserName: string
+      FromUserName: 'sys'
+      CreateTime: string
+      MsgType: 'event'
+      Event: 'change_external_contact'
+      ChangeType: 'add_half_external_contact'
+      UserID: string
+      ExternalUserID: string
+      State?: string
+      WelcomeCode?: string
+    }
+    /**
+     * 删除企业客户事件
+     * https://developer.work.weixin.qq.com/document/path/92130
+     */
+    event_change_external_contact_del_external_contact: {
+      ToUserName: string
+      FromUserName: 'sys'
+      CreateTime: string
+      MsgType: 'event'
+      Event: 'change_external_contact'
+      ChangeType: 'del_external_contact'
+      UserID: string
+      ExternalUserID: string
+      Source: 'DELETE_BY_TRANSFER' | string
+    }
+  }
+}

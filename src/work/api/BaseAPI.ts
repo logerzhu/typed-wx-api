@@ -1,5 +1,9 @@
-import { AccessToken, MemoryTokenStorage, TokenStorage } from '../AccessToken'
-import { MemoryTicketStorage, Ticket, TicketStorage } from '../Ticket'
+import {
+  AccessToken,
+  MemoryTokenStorage,
+  TokenStorage
+} from '../common/AccessToken'
+import { MemoryTicketStorage, Ticket, TicketStorage } from '../common/Ticket'
 import Axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
 
 export class WxWorkAPIError extends Error {

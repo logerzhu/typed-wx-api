@@ -1,5 +1,5 @@
-import { TokenStorage } from './AccessToken'
-import { TicketStorage } from './Ticket'
+import { TokenStorage } from './common/AccessToken'
+import { TicketStorage } from './common/Ticket'
 import { APICrypto } from './api/APICrypto'
 import { applyMixins } from '../common'
 import { APIConfig, BaseAPI } from './api/BaseAPI'

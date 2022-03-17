@@ -5,7 +5,7 @@ export class WxCrypto {
   private readonly token: string
   private readonly key: Buffer
   private readonly iv: Buffer
-  private readonly id: string
+  readonly id: string
 
   /*
    * 生成随机字符串

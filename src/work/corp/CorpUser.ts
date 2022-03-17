@@ -1,4 +1,5 @@
 import { BaseCorpAPI } from './BaseCorpAPI'
+import { ArrayItems, CommaArray } from '../CorpCrypto'
 
 export type UserData = {
   userid: string //成员Userid。对应管理端的帐号，企业内必须唯一。长度为1~64个字节。只能由数字、字母和“_-@.”四种字符组成，且第一个字符必须是数字或字母。系统进行唯一性检查时会忽略大小写。
@@ -206,5 +207,97 @@ export abstract class CorpUser extends BaseCorpAPI {
       }
     })
     return result.userid as string
+  }
+}
+
+//定义回调消息类型格式
+declare module '../CorpCrypto' {
+  export interface CorpEvents {
+    /**
+     * 新增成员事件
+     * https://developer.work.weixin.qq.com/document/path/90970
+     */
+    event_change_contact_create_user: {
+      ToUserName: string
+      FromUserName: string
+      CreateTime: string
+      MsgType: 'event'
+      Event: 'change_contact'
+      ChangeType: 'create_user'
+      UserID: string
+      Name: string
+      Department?: CommaArray<string>
+      MainDepartment?: string
+      IsLeaderInDept?: CommaArray<'0' | '1'>
+      DirectLeader?: CommaArray<string>
+      Position?: string
+      Mobile?: string
+      Gender?: '1' | '2'
+      Email?: string
+      BizMail?: string
+      Status?: '1' | '2' | '4' | '5'
+      Avatar?: string
+      Alias?: string
+      Telephone?: string
+      Address?: string
+      ExtAttr?: ArrayItems<{
+        Item: {
+          Name: string
+          Type: '0' | '1'
+          Text?: { Value?: string }
+          Web?: { Title?: string; Url?: string }
+        }
+      }>
+    }
+    /**
+     * 更新成员事件
+     * https://developer.work.weixin.qq.com/document/path/90970
+     */
+    event_change_contact_update_user: {
+      ToUserName: string
+      FromUserName: string
+      CreateTime: string
+      MsgType: 'event'
+      Event: 'change_contact'
+      ChangeType: 'update_user'
+      UserID: string
+      NewUserID?: string
+      Name?: string
+      Department?: CommaArray<string>
+      MainDepartment?: string
+      IsLeaderInDept?: CommaArray<'0' | '1'>
+      DirectLeader?: CommaArray<string>
+      Position?: string
+      Mobile?: string
+      Gender?: '1' | '2'
+      Email?: string
+      BizMail?: string
+      Status?: '1' | '2' | '4' | '5'
+      Avatar?: string
+      Alias?: string
+      Telephone?: string
+      Address?: string
+      ExtAttr?: ArrayItems<{
+        Item: {
+          Name: string
+          Type: '0' | '1'
+          Text?: { Value?: string }
+          Web?: { Title?: string; Url?: string }
+        }
+      }>
+    }
+    /**
+     * 删除成员事件
+     * https://developer.work.weixin.qq.com/document/path/90970
+     */
+    event_change_contact_delete_user: {
+      ToUserName: string
+      FromUserName: string
+      CreateTime: string
+      MsgType: 'event'
+      Event: 'change_contact'
+      ChangeType: 'update_user'
+      UserID: string
+    }
   }
 }

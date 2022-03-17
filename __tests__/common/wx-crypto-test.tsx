@@ -1,15 +1,21 @@
 /* eslint-env jest */
-import { testIncomeEvent, wxCrypto } from '../config'
+import { corpCrypto, testUserUpdateEvent, testVerifyEvent } from '../config'
 
 test('Test Income Msg decrypt API', async () => {
-  const msgSig = wxCrypto.signature({
-    timestamp: testIncomeEvent.encrypt.timestamp,
-    nonce: testIncomeEvent.encrypt.nonce,
-    encrypt: decodeURIComponent(testIncomeEvent.encrypt.echostr)
-  })
-  expect(msgSig).toEqual(testIncomeEvent.encrypt.msg_signature)
-  const decryptInfo = wxCrypto.decrypt(
-    decodeURIComponent(testIncomeEvent.encrypt.echostr)
+  const verifyResult = await corpCrypto.decrypt(
+    testVerifyEvent.request.query,
+    testVerifyEvent.request.echostr
   )
-  expect(decryptInfo).toEqual(testIncomeEvent.decrypt)
+  expect(verifyResult).toEqual(testVerifyEvent.decrypt)
+
+  const decryptInfo = await corpCrypto.decryptXML(
+    testUserUpdateEvent.request.query,
+    testUserUpdateEvent.request.body
+  )
+  expect(decryptInfo.errMessage === undefined).toBeTruthy()
+  if (decryptInfo.errMessage === undefined) {
+    expect(
+      decryptInfo.Decrypt.ChangeType === 'edit_external_contact'
+    ).toBeTruthy()
+  }
 })

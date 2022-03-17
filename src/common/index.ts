@@ -1,5 +1,6 @@
 import Crypto from 'crypto'
-import xml2js from 'xml2js'
+import xml2js, { BuilderOptions, ParserOptions } from 'xml2js'
+
 export * from './PKCS7Encoder'
 export * from './WxCrypto'
 
@@ -65,16 +66,11 @@ export function sign(ret: object) {
 /**
  * 解析xml成object
  * @param xml 待解析字符串
- * @param opts xml2js.parseString参数
+ * @param opts xml2js.parseStringPromise 参数
  * @returns {Promise}
  */
-export function parseXml(xml: string, opts = {}) {
-  return new Promise((resolve, reject) => {
-    xml2js.parseString(xml, opts, (err, result) => {
-      if (err) return reject(err)
-      resolve(result)
-    })
-  })
+export function parseXml(xml: string, opts: ParserOptions = {}) {
+  return xml2js.parseStringPromise(xml, opts)
 }
 
 /**
@@ -83,8 +79,7 @@ export function parseXml(xml: string, opts = {}) {
  * @param opts xml2js.Builder的参数
  * @returns String
  */
-export function buildXml(obj: object, opts = {}) {
+export function buildXml(obj: object, opts: BuilderOptions = {}) {
   const builder = new xml2js.Builder(opts)
   return builder.buildObject(obj)
 }
-export { PKCS7Encoder } from './PKCS7Encoder'
