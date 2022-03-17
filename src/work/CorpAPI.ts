@@ -1,6 +1,6 @@
 import { TokenStorage } from './AccessToken'
 import { TicketStorage } from './Ticket'
-import { applyMixins } from '../util'
+import { applyMixins } from '../common'
 import { CorpJS } from './corp/CorpJS'
 import { CorpUser } from './corp/CorpUser'
 import { CorpOAuth } from './corp/CorpOAuth'

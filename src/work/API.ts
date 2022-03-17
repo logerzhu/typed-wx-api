@@ -1,7 +1,7 @@
 import { TokenStorage } from './AccessToken'
 import { TicketStorage } from './Ticket'
 import { APICrypto } from './api/APICrypto'
-import { applyMixins } from '../util'
+import { applyMixins } from '../common'
 import { APIConfig, BaseAPI } from './api/BaseAPI'
 import { APIMedia } from './api/APIMedia'
 

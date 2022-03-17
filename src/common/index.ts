@@ -1,5 +1,7 @@
 import Crypto from 'crypto'
 import xml2js from 'xml2js'
+export * from './PKCS7Encoder'
+export * from './WxCrypto'
 
 export function applyMixins(derivedCtor: any, constructors: any[]) {
   constructors.forEach((baseCtor) => {
@@ -54,10 +56,10 @@ export function raw(args: any) {
  */
 export function sign(ret: object) {
   const string = raw(ret)
-  const shasum = Crypto.createHash('sha1')
+  const shaSum = Crypto.createHash('sha1')
 
-  shasum.update(string)
-  return shasum.digest('hex')
+  shaSum.update(string)
+  return shaSum.digest('hex')
 }
 
 /**
@@ -85,3 +87,4 @@ export function buildXml(obj: object, opts = {}) {
   const builder = new xml2js.Builder(opts)
   return builder.buildObject(obj)
 }
+export { PKCS7Encoder } from './PKCS7Encoder'

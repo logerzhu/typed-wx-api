@@ -1,4 +1,4 @@
-import { createNonceStr, createTimestamp, sign } from '../../util'
+import { createNonceStr, createTimestamp, sign } from '../../common'
 import { BaseCorpAPI } from './BaseCorpAPI'
 
 export abstract class CorpJS extends BaseCorpAPI {
