@@ -1,7 +1,7 @@
-import { ApiBase } from './api_base'
 import FormData from 'form-data'
+import { CorpBase } from './corp_base'
 
-export abstract class ApiMedia extends ApiBase {
+export abstract class CorpMedia extends CorpBase {
   /**
    * 上传临时素材
    */

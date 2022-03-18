@@ -7,9 +7,9 @@ import { CorpMsgTemplate } from './corp_msg_template'
 import { CorpContact } from './corp_contact'
 import { CorpGroupChat } from './corp_groupchat'
 import { CorpMsgAudit } from './corp_msg_audit'
-import { APIConfig} from '../api/api_base'
 import { CorpBase } from './corp_base'
-import {WxAPIError} from "../../errors";
+import { CorpMedia } from './corp_media'
+import { WxAPIError } from '../../errors'
 
 export interface CorpApi
   extends CorpJs,
@@ -18,7 +18,8 @@ export interface CorpApi
     CorpMsgTemplate,
     CorpContact,
     CorpGroupChat,
-    CorpMsgAudit {}
+    CorpMsgAudit,
+    CorpMedia {}
 
 export class CorpApi extends CorpBase {
   constructor(
@@ -26,7 +27,7 @@ export class CorpApi extends CorpBase {
       corpid: string
       corpSecret: string
       agentid?: string
-    } & APIConfig,
+    },
     tokenStorage?: TokenStorage,
     ticketStorage?: TicketStorage
   ) {
@@ -50,5 +51,6 @@ applyMixins(CorpApi, [
   CorpMsgTemplate,
   CorpContact,
   CorpGroupChat,
-  CorpMsgAudit
+  CorpMsgAudit,
+  CorpMedia
 ])

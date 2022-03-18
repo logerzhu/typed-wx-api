@@ -1,6 +1,6 @@
 import crypto from 'crypto'
-import { ApiBase} from './api_base'
-import {WxAPIError} from "../../errors";
+import { ApiBase } from './api_base'
+import { WxAPIError } from '../errors'
 
 export abstract class ApiCrypto extends ApiBase {
   private cryptoConfig: {

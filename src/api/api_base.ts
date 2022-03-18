@@ -1,10 +1,14 @@
-import {AccessToken, MemoryTokenStorage, TokenStorage} from '../../storage/access_token'
-import {MemoryTicketStorage, Ticket, TicketStorage} from '../../storage/ticket'
-import Axios, {AxiosInstance, AxiosRequestConfig} from 'axios'
-import {WxAPIError} from "../../errors";
+import {
+  AccessToken,
+  MemoryTokenStorage,
+  TokenStorage
+} from '../storage/access_token'
+import { MemoryTicketStorage, Ticket, TicketStorage } from '../storage/ticket'
+import Axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
+import { WxAPIError } from '../errors'
 
 export type APIConfig = {
-  baseURL?: string
+  baseURL: string
   accessTokenKey?: string
 }
 
@@ -21,7 +25,7 @@ export abstract class ApiBase {
   ) {
     this.config = {
       ...config,
-      baseURL: config.baseURL || 'https://qyapi.weixin.qq.com/cgi-bin/',
+      baseURL: config.baseURL,
       accessTokenKey: config.accessTokenKey || 'access_token'
     }
     this.tokenStorage = tokenStorage || new MemoryTokenStorage()
@@ -50,10 +54,7 @@ export abstract class ApiBase {
     try {
       const res = await this.axiosInstance.request(opts)
       if (res.status < 200 || res.status > 204) {
-        throw new WxAPIError(
-          `url: ${opts.url}, status code: ${res.status}`,
-          -1
-        )
+        throw new WxAPIError(`url: ${opts.url}, status code: ${res.status}`, -1)
       }
 
       const { errcode, errmsg } = res.data
@@ -61,7 +62,7 @@ export abstract class ApiBase {
         return res.data
       }
 
-      if (errcode === 40001 && retry > 0) {
+      if ((errcode === 40001 || errcode === 42001) && retry > 0) {
         // Token过期, 重新获取
         await this.tokenStorage.save(null)
         return this.request(opts, retry - 1)

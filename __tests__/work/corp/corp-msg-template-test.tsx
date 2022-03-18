@@ -11,7 +11,7 @@ test('Test CorpMsgTemplate', async () => {
   await new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(null)
-    }, 5000)
+    }, 2000)
   })
   const msgs = await corpApi.getGroupMsgList({
     chat_type: 'single',

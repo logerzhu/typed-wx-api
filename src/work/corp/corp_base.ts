@@ -1,5 +1,4 @@
-import { Api } from '../api/api'
-import { APIConfig } from '../api/api_base'
+import { Api } from '../../api/api'
 import { TicketStorage, TokenStorage } from '../../storage'
 
 export abstract class CorpBase extends Api {
@@ -12,11 +11,15 @@ export abstract class CorpBase extends Api {
       corpid: string
       corpSecret: string
       agentid?: string
-    } & APIConfig,
+    },
     tokenStorage?: TokenStorage,
     ticketStorage?: TicketStorage
   ) {
-    super(config, tokenStorage, ticketStorage)
+    super(
+      { baseURL: 'https://qyapi.weixin.qq.com/cgi-bin/' },
+      tokenStorage,
+      ticketStorage
+    )
     this.corpid = config.corpid
     this.corpSecret = config.corpSecret
     this.agentid = config.agentid
