@@ -1,7 +1,6 @@
 import Crypto from 'crypto'
 
 export class WxJsCrypto {
-
   static createNonceStr() {
     return Math.random().toString(36).substr(2, 15)
   }
@@ -11,8 +10,8 @@ export class WxJsCrypto {
   }
 
   /*
- * 排序查询字符串
- */
+   * 排序查询字符串
+   */
   private static raw(args: any) {
     let keys = Object.keys(args)
     keys = keys.sort()

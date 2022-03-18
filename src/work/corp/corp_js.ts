@@ -1,5 +1,5 @@
-import {WxJsCrypto} from '../../crypto'
-import {CorpBase} from './corp_base'
+import { WxJsCrypto } from '../../crypto'
+import { CorpBase } from './corp_base'
 
 export abstract class CorpJs extends CorpBase {
   /**
@@ -42,10 +42,10 @@ export abstract class CorpJs extends CorpBase {
    * @param {Object} param 参数
    */
   async getJsConfig({
-                      debug,
-                      url,
-                      jsApiList
-                    }: {
+    debug,
+    url,
+    jsApiList
+  }: {
     debug?: boolean
     url: string
     jsApiList: string[]
@@ -73,10 +73,10 @@ export abstract class CorpJs extends CorpBase {
   }
 
   async getAgentJsConfig({
-                           agentid,
-                           url,
-                           jsApiList
-                         }: {
+    agentid,
+    url,
+    jsApiList
+  }: {
     agentid: string
     url: string
     jsApiList: string[]
