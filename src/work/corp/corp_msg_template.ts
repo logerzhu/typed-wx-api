@@ -1,4 +1,4 @@
-import { BaseCorpAPI } from '../BaseCorpAPI'
+import { CorpBase } from './corp_base'
 
 export type MsgSendResult = {
   userid: string
@@ -66,7 +66,7 @@ export type GroupMsg = {
   attachments?: MsgAttachment[]
 }
 
-export abstract class CorpMsgTemplate extends BaseCorpAPI {
+export abstract class CorpMsgTemplate extends CorpBase {
   //创建企业群发
   async addMsgTemplate(
     data: {

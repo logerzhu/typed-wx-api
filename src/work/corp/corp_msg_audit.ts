@@ -1,9 +1,9 @@
-import { BaseCorpAPI } from './BaseCorpAPI'
+import { CorpBase } from './corp_base'
 
 /**
  * 回话存档相关接口
  */
-export abstract class CorpMsgAudit extends BaseCorpAPI {
+export abstract class CorpMsgAudit extends CorpBase {
   /**
    * 获取会话内容存档内部群信息
    */

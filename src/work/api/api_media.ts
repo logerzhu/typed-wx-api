@@ -1,7 +1,7 @@
-import { BaseAPI } from './BaseAPI'
+import { ApiBase } from './api_base'
 import FormData from 'form-data'
 
-export abstract class APIMedia extends BaseAPI {
+export abstract class ApiMedia extends ApiBase {
   /**
    * 上传临时素材
    */

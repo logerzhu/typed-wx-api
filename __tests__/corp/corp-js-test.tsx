@@ -1,22 +1,22 @@
 /* eslint-env jest */
-import { corpAPI, testUserid, testUserPhoneNumber } from '../config'
+import { corpApi, testUserid, testUserPhoneNumber } from '../config'
 
-test('Test CorpJS API', async () => {
-  const apiTicket = await corpAPI.getJsApiTicket()
+test('Test CorpJS Api', async () => {
+  const apiTicket = await corpApi.getJsApiTicket()
   expect(apiTicket.ticket != null).toBeTruthy()
   expect(apiTicket.expires_in != null).toBeTruthy()
 
-  const apiAgentTicket = await corpAPI.getJsApiAgentTicket()
+  const apiAgentTicket = await corpApi.getJsApiAgentTicket()
   expect(apiAgentTicket.ticket != null).toBeTruthy()
   expect(apiAgentTicket.expires_in != null).toBeTruthy()
 
-  const jsConfig = await corpAPI.getJsConfig({
+  const jsConfig = await corpApi.getJsConfig({
     url: 'http://www.test.com',
     jsApiList: []
   })
   expect(jsConfig.signature != null).toBeTruthy()
 
-  const agentJsConfig = await corpAPI.getAgentJsConfig({
+  const agentJsConfig = await corpApi.getAgentJsConfig({
     agentid: 'chat',
     url: 'http://www.test.com',
     jsApiList: []

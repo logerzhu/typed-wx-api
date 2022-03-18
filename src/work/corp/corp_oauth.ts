@@ -1,7 +1,7 @@
-import { BaseCorpAPI } from './BaseCorpAPI'
+import { CorpBase } from './corp_base'
 import querystring from 'querystring'
 
-export abstract class CorpOAuth extends BaseCorpAPI {
+export abstract class CorpOAuth extends CorpBase {
   /**
    * 获取授权页面的URL地址
    * https://work.weixin.qq.com/api/doc#10028/获取code

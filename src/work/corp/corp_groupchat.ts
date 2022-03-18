@@ -1,6 +1,6 @@
-import { BaseCorpAPI } from '../BaseCorpAPI'
+import { CorpBase } from './corp_base'
 
-export abstract class CorpGroupChat extends BaseCorpAPI {
+export abstract class CorpGroupChat extends CorpBase {
   /**
    * 获取客户群列表
    */

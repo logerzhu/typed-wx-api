@@ -1,15 +1,15 @@
 /* eslint-env jest */
-import { corpAPI } from '../config'
+import { corpApi } from '../config'
 import fs from 'fs'
 
-test('Test APIMedia', async () => {
-  const image = await corpAPI.uploadImage(
+test('Test ApiMedia', async () => {
+  const image = await corpApi.uploadImage(
     fs.readFileSync('./__tests__/resource/1.png'),
     '1.png'
   )
   expect(image.url != null).toBeTruthy()
 
-  const media = await corpAPI.uploadMedia(
+  const media = await corpApi.uploadMedia(
     fs.readFileSync('./__tests__/resource/1.png'),
     'image',
     '1.png'
@@ -18,6 +18,6 @@ test('Test APIMedia', async () => {
   expect(media.mediaId != null).toBeTruthy()
   expect(media.createdAt != null).toBeTruthy()
 
-  const mediaFile = await corpAPI.getMedia(media.mediaId)
+  const mediaFile = await corpApi.getMedia(media.mediaId)
   expect(mediaFile != null).toBeTruthy()
 })

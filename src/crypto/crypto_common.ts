@@ -1,5 +1,5 @@
 import crypto from 'crypto'
-import { PKCS7Encoder } from './PKCS7Encoder'
+import { PKCS7Encoder } from './pkcs7_encode'
 
 export class WxCrypto {
   private readonly token: string
@@ -7,9 +7,6 @@ export class WxCrypto {
   private readonly iv: Buffer
   readonly id: string
 
-  /*
-   * 生成随机字符串
-   */
   static createNonceStr() {
     return Math.random().toString(36).substr(2, 15)
   }

@@ -1,7 +1,7 @@
-import {sign, WxCrypto} from '../../common'
-import { BaseCorpAPI } from './BaseCorpAPI'
+import {WxJsCrypto} from '../../crypto'
+import {CorpBase} from './corp_base'
 
-export abstract class CorpJS extends BaseCorpAPI {
+export abstract class CorpJs extends CorpBase {
   /**
    * 获取jsapi_ticket
    * https://work.weixin.qq.com/api/doc#10029/附录1-JS-SDK使用权限签名算法
@@ -42,19 +42,19 @@ export abstract class CorpJS extends BaseCorpAPI {
    * @param {Object} param 参数
    */
   async getJsConfig({
-    debug,
-    url,
-    jsApiList
-  }: {
+                      debug,
+                      url,
+                      jsApiList
+                    }: {
     debug?: boolean
     url: string
     jsApiList: string[]
   }) {
     const ticketToken = await this.ensureTicket('jsapi')
 
-    const nonceStr = WxCrypto.createNonceStr()
-    const timestamp = WxCrypto.createTimestamp()
-    const signature = sign({
+    const nonceStr = WxJsCrypto.createNonceStr()
+    const timestamp = WxJsCrypto.createTimestamp()
+    const signature = WxJsCrypto.sign({
       jsapi_ticket: ticketToken.ticket,
       noncestr: nonceStr,
       timestamp: timestamp,
@@ -73,19 +73,19 @@ export abstract class CorpJS extends BaseCorpAPI {
   }
 
   async getAgentJsConfig({
-    agentid,
-    url,
-    jsApiList
-  }: {
+                           agentid,
+                           url,
+                           jsApiList
+                         }: {
     agentid: string
     url: string
     jsApiList: string[]
   }) {
     const ticketToken = await this.ensureTicket('jsapi-agent')
 
-    const nonceStr = WxCrypto.createNonceStr()
-    const timestamp = WxCrypto.createTimestamp()
-    const signature = sign({
+    const nonceStr = WxJsCrypto.createNonceStr()
+    const timestamp = WxJsCrypto.createTimestamp()
+    const signature = WxJsCrypto.sign({
       jsapi_ticket: ticketToken.ticket,
       noncestr: nonceStr,
       timestamp,

@@ -1,9 +1,8 @@
-import { API } from '../API'
-import { APIConfig } from '../api/BaseAPI'
-import { TokenStorage } from '../common/AccessToken'
-import { TicketStorage } from '../common/Ticket'
+import { Api } from '../api/api'
+import { APIConfig } from '../api/api_base'
+import { TicketStorage, TokenStorage } from '../../storage'
 
-export abstract class BaseCorpAPI extends API {
+export abstract class CorpBase extends Api {
   readonly corpid: string
   readonly corpSecret: string
   readonly agentid?: string

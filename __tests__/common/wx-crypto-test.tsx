@@ -1,7 +1,7 @@
 /* eslint-env jest */
 import { corpCrypto, testUserUpdateEvent, testVerifyEvent } from '../config'
 
-test('Test Income Msg decrypt API', async () => {
+test('Test Income Msg decrypt Api', async () => {
   const verifyResult = await corpCrypto.decrypt(
     testVerifyEvent.request.query,
     testVerifyEvent.request.echostr

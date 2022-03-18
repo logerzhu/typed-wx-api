@@ -2,8 +2,12 @@ import {
   AccessToken,
   MemoryTokenStorage,
   TokenStorage
-} from '../common/AccessToken'
-import { MemoryTicketStorage, Ticket, TicketStorage } from '../common/Ticket'
+} from '../../storage/access_token'
+import {
+  MemoryTicketStorage,
+  Ticket,
+  TicketStorage
+} from '../../storage/ticket'
 import Axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
 
 export class WxWorkAPIError extends Error {
@@ -20,7 +24,7 @@ export type APIConfig = {
   accessTokenKey?: string
 }
 
-export abstract class BaseAPI {
+export abstract class ApiBase {
   readonly config: Required<APIConfig>
   private tokenStorage: TokenStorage
   private ticketStorage: TicketStorage

@@ -1,4 +1,4 @@
-import { WxCrypto } from '../common'
+import { WxCrypto } from '../../crypto'
 import xml2js from 'xml2js'
 
 export type ArrayItems<T> = T | T[]

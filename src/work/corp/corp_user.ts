@@ -1,5 +1,5 @@
-import { BaseCorpAPI } from './BaseCorpAPI'
-import { ArrayItems, CommaArray } from '../CorpCrypto'
+import { CorpBase } from './corp_base'
+import { ArrayItems, CommaArray } from '../crypto/crypto_corp'
 
 export type UserData = {
   userid: string //成员Userid。对应管理端的帐号，企业内必须唯一。长度为1~64个字节。只能由数字、字母和“_-@.”四种字符组成，且第一个字符必须是数字或字母。系统进行唯一性检查时会忽略大小写。
@@ -51,7 +51,7 @@ export type ReadOnlyUserData = UserData & {
   open_userid?: string // 全局唯一。对于同一个服务商，不同应用获取到企业内同一个成员的open_userid是相同的，最多64个字节。仅第三方应用可获取
 }
 
-export abstract class CorpUser extends BaseCorpAPI {
+export abstract class CorpUser extends CorpBase {
   /**
    * 创建成员
    */
@@ -211,7 +211,7 @@ export abstract class CorpUser extends BaseCorpAPI {
 }
 
 //定义回调消息类型格式
-declare module '../CorpCrypto' {
+declare module '../crypto/crypto_corp' {
   export interface CorpEvents {
     /**
      * 新增成员事件

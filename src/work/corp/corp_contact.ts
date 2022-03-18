@@ -1,4 +1,4 @@
-import { BaseCorpAPI } from '../BaseCorpAPI'
+import { CorpBase } from './corp_base'
 
 export type FollowUser = {
   userid: string //添加了此外部联系人的企业成员userid
@@ -45,7 +45,7 @@ export type ExternalContactUser = {
   external_profile?: any //外部联系人的自定义展示信息，可以有多个字段和多种类型，包括文本，网页和小程序，仅当联系人类型是企业微信用户时有此字段，字段详情见对外属性；
 }
 
-export abstract class CorpContact extends BaseCorpAPI {
+export abstract class CorpContact extends CorpBase {
   /**
    * 获取配置了客户联系功能的成员列表
    * */
@@ -146,7 +146,7 @@ export abstract class CorpContact extends BaseCorpAPI {
 }
 
 //定义回调消息类型格式
-declare module '../../CorpCrypto' {
+declare module '../crypto/crypto_corp' {
   export interface CorpEvents {
     /**
      * 添加企业客户事件
