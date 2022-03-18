@@ -15,7 +15,7 @@ export abstract class ApiCrypto extends ApiBase {
    * @returns {Blob|ArrayBuffer|Array.<T>|string|*}
    * @constructor
    */
-  PKCS7Decoder(buff: Buffer) {
+  pkcs7Decoder(buff: Buffer) {
     let pad = buff[buff.length - 1]
     if (pad < 1 || pad > 32) {
       pad = 0
@@ -29,7 +29,7 @@ export abstract class ApiCrypto extends ApiBase {
    * @returns {Blob|ArrayBuffer|Array.<T>|string|*}
    * @constructor
    */
-  PKCS7Encoder(buff: Buffer) {
+  pkcs7Encoder(buff: Buffer) {
     const blockSize = 32
     const strSize = buff.length
     const amountToPad = blockSize - (strSize % blockSize)
@@ -112,7 +112,7 @@ export abstract class ApiCrypto extends ApiBase {
     const aesCipher = crypto.createDecipheriv('aes-256-cbc', aesKey, iv)
     aesCipher.setAutoPadding(false)
 
-    const decipheredBuff = this.PKCS7Decoder(
+    const decipheredBuff = this.pkcs7Decoder(
       Buffer.concat([aesCipher.update(str, 'base64'), aesCipher.final()])
     )
     const data = decipheredBuff.slice(16)
