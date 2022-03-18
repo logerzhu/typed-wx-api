@@ -1,5 +1,6 @@
 import crypto from 'crypto'
-import { ApiBase, WxWorkAPIError } from './api_base'
+import { ApiBase} from './api_base'
+import {WxAPIError} from "../../errors";
 
 export abstract class ApiCrypto extends ApiBase {
   private cryptoConfig: {
@@ -121,7 +122,7 @@ export abstract class ApiCrypto extends ApiBase {
     const decryptCorpId = data.slice(msgLen + 4).toString()
 
     if (corpId !== decryptCorpId) {
-      throw new WxWorkAPIError('corpId is invalid', 400)
+      throw new WxAPIError('corpId is invalid', 400)
     }
     return data.slice(4, msgLen + 4).toString()
   }

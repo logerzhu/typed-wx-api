@@ -1,23 +1,7 @@
-import {
-  AccessToken,
-  MemoryTokenStorage,
-  TokenStorage
-} from '../../storage/access_token'
-import {
-  MemoryTicketStorage,
-  Ticket,
-  TicketStorage
-} from '../../storage/ticket'
-import Axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
-
-export class WxWorkAPIError extends Error {
-  readonly errCode: number
-
-  constructor(message: string, errCode: number) {
-    super(message + ':' + errCode)
-    this.errCode = errCode
-  }
-}
+import {AccessToken, MemoryTokenStorage, TokenStorage} from '../../storage/access_token'
+import {MemoryTicketStorage, Ticket, TicketStorage} from '../../storage/ticket'
+import Axios, {AxiosInstance, AxiosRequestConfig} from 'axios'
+import {WxAPIError} from "../../errors";
 
 export type APIConfig = {
   baseURL?: string
@@ -66,7 +50,7 @@ export abstract class ApiBase {
     try {
       const res = await this.axiosInstance.request(opts)
       if (res.status < 200 || res.status > 204) {
-        throw new WxWorkAPIError(
+        throw new WxAPIError(
           `url: ${opts.url}, status code: ${res.status}`,
           -1
         )
@@ -82,22 +66,22 @@ export abstract class ApiBase {
         await this.tokenStorage.save(null)
         return this.request(opts, retry - 1)
       } else {
-        throw new WxWorkAPIError(errmsg, errcode)
+        throw new WxAPIError(errmsg, errcode)
       }
     } catch (error) {
-      if (error instanceof WxWorkAPIError) {
+      if (error instanceof WxAPIError) {
         throw error
       } else if (error.response) {
-        throw new WxWorkAPIError(
+        throw new WxAPIError(
           error.response.data?.errmsg || '服务器内部错误',
           error.response.data?.errcode || error.response.status
         )
       } else if (error.request) {
-        throw new WxWorkAPIError('请求超时，请检查网络', 406)
+        throw new WxAPIError('请求超时，请检查网络', 406)
       } else if (typeof error.errcode === 'undefined') {
-        throw new WxWorkAPIError('请求失败，请稍后再试', 400)
+        throw new WxAPIError('请求失败，请稍后再试', 400)
       } else {
-        throw new WxWorkAPIError('未知错误', 500)
+        throw new WxAPIError('未知错误', 500)
       }
     }
   }
