@@ -17,19 +17,6 @@ export function applyMixins(derivedCtor: any, constructors: any[]) {
   })
 }
 
-/*
- * 生成随机字符串
- */
-export function createNonceStr() {
-  return Math.random().toString(36).substr(2, 15)
-}
-
-/*
- * 生成时间戳
- */
-export function createTimestamp() {
-  return new Date().getTime() / 1000 + ''
-}
 
 /*
  * 排序查询字符串

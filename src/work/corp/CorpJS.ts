@@ -1,4 +1,4 @@
-import { createNonceStr, createTimestamp, sign } from '../../common'
+import {sign, WxCrypto} from '../../common'
 import { BaseCorpAPI } from './BaseCorpAPI'
 
 export abstract class CorpJS extends BaseCorpAPI {
@@ -52,8 +52,8 @@ export abstract class CorpJS extends BaseCorpAPI {
   }) {
     const ticketToken = await this.ensureTicket('jsapi')
 
-    const nonceStr = createNonceStr()
-    const timestamp = createTimestamp()
+    const nonceStr = WxCrypto.createNonceStr()
+    const timestamp = WxCrypto.createTimestamp()
     const signature = sign({
       jsapi_ticket: ticketToken.ticket,
       noncestr: nonceStr,
@@ -83,8 +83,8 @@ export abstract class CorpJS extends BaseCorpAPI {
   }) {
     const ticketToken = await this.ensureTicket('jsapi-agent')
 
-    const nonceStr = createNonceStr()
-    const timestamp = createTimestamp()
+    const nonceStr = WxCrypto.createNonceStr()
+    const timestamp = WxCrypto.createTimestamp()
     const signature = sign({
       jsapi_ticket: ticketToken.ticket,
       noncestr: nonceStr,
