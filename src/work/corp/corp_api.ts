@@ -1,5 +1,5 @@
 import { TicketStorage, TokenStorage } from '../../storage'
-import { applyMixins } from '../../common'
+import { applyMixins } from '../../utils'
 import { CorpJs } from './corp_js'
 import { CorpUser } from './corp_user'
 import { CorpOAuth } from './corp_oauth'

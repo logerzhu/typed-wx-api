@@ -1,6 +1,6 @@
 import { TicketStorage, TokenStorage } from '../../storage'
 import { ApiCrypto } from './api_crypto'
-import { applyMixins } from '../../common'
+import { applyMixins } from '../../utils'
 import { ApiBase, APIConfig } from './api_base'
 import { ApiMedia } from './api_media'
 
