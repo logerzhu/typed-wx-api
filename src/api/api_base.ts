@@ -1,9 +1,11 @@
 import {
   AccessToken,
+  MemoryTicketStorage,
   MemoryTokenStorage,
+  Ticket,
+  TicketStorage,
   TokenStorage
-} from '../storage/access_token'
-import { MemoryTicketStorage, Ticket, TicketStorage } from '../storage/ticket'
+} from '../storage'
 import Axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
 import { WxAPIError } from '../errors'
 

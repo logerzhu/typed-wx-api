@@ -4,8 +4,14 @@ import { WeixinIP } from './weixin_ip'
 import { WeixinJs } from './weixin_js'
 import { WeixinUser } from './weixin_user'
 import { WeixinBase } from './weixin_base'
+import { WeixinQRCode } from './weixin_qrcode'
 
-export interface WeixinApi extends WeixinBase, WeixinIP, WeixinJs, WeixinUser {}
+export interface WeixinApi
+  extends WeixinBase,
+    WeixinIP,
+    WeixinJs,
+    WeixinUser,
+    WeixinQRCode {}
 
 export class WeixinApi extends WeixinBase {
   readonly appid: string
@@ -24,4 +30,4 @@ export class WeixinApi extends WeixinBase {
   }
 }
 
-applyMixins(WeixinApi, [WeixinIP, WeixinJs, WeixinUser])
+applyMixins(WeixinApi, [WeixinIP, WeixinJs, WeixinUser, WeixinQRCode])

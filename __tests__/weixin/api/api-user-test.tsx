@@ -1,7 +1,7 @@
 /* eslint-env jest */
 import { testOpenid, weixinApi } from '../config'
 
-test('Test Weixin IP', async () => {
+test('Test Weixin User', async () => {
   const user = await weixinApi.getUser(testOpenid)
   expect(user.subscribe).toEqual(1)
 
