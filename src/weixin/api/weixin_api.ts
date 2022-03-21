@@ -1,9 +1,11 @@
 import { TokenStorage } from '../../storage'
 import { applyMixins } from '../../utils'
 import { WeixinIP } from './weixin_ip'
+import { WeixinJs } from './weixin_js'
+import { WeixinUser } from './weixin_user'
 import { WeixinBase } from './weixin_base'
 
-export interface WeixinApi extends WeixinBase, WeixinIP {}
+export interface WeixinApi extends WeixinBase, WeixinIP, WeixinJs, WeixinUser {}
 
 export class WeixinApi extends WeixinBase {
   readonly appid: string
@@ -22,4 +24,4 @@ export class WeixinApi extends WeixinBase {
   }
 }
 
-applyMixins(WeixinApi, [WeixinIP])
+applyMixins(WeixinApi, [WeixinIP, WeixinJs, WeixinUser])

@@ -2,7 +2,7 @@ import { WeixinBase } from './weixin_base'
 import { WxJsCrypto } from '../../crypto'
 import crypto from 'crypto'
 
-export abstract class WeixinIP extends WeixinBase {
+export abstract class WeixinJs extends WeixinBase {
   /**
    * 获取微信JS SDK Config的所需参数
    * @param param

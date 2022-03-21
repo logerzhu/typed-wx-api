@@ -1,5 +1,6 @@
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  testMatch:['**/__tests__/**/*-test.tsx']
+    testTimeout: 10000,
+    preset: 'ts-jest',
+    testEnvironment: 'node',
+    testMatch: ['**/__tests__/**/*-test.tsx']
 }
