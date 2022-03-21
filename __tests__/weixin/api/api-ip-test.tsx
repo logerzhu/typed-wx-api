@@ -1,7 +1,7 @@
 /* eslint-env jest */
-import { weixinApi } from '../config'
+import { testWxApi } from '../config'
 
 test('Test Weixin IP', async () => {
-  const ips = await weixinApi.getIP()
+  const ips = await testWxApi.getIP()
   expect(ips.length > 0).toBeTruthy()
 })

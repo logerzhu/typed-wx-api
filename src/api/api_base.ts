@@ -75,6 +75,7 @@ export abstract class ApiBase {
       if (error instanceof WxAPIError) {
         throw error
       } else if (error.response) {
+        console.error('ErrorRequest', opts)
         throw new WxAPIError(
           error.response.data?.errmsg || '服务器内部错误',
           error.response.data?.errcode || error.response.status

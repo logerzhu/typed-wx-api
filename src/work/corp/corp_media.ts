@@ -21,8 +21,8 @@ export abstract class CorpMedia extends CorpBase {
     })
     return {
       type: result.type as 'image' | 'voice' | 'video' | 'file',
-      mediaId: result.media_id as string,
-      createdAt: new Date(parseInt(result.created_at) * 1000)
+      media_id: result.media_id as string,
+      created_at: result.created_at as string
     }
   }
 

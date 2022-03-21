@@ -15,9 +15,9 @@ test('Test ApiMedia', async () => {
     '1.png'
   )
   expect(media.type === 'image').toBeTruthy()
-  expect(media.mediaId != null).toBeTruthy()
-  expect(media.createdAt != null).toBeTruthy()
+  expect(media.media_id != null).toBeTruthy()
+  expect(media.created_at != null).toBeTruthy()
 
-  const mediaFile = await corpApi.getMedia(media.mediaId)
+  const mediaFile = await corpApi.getMedia(media.media_id)
   expect(mediaFile != null).toBeTruthy()
 })
