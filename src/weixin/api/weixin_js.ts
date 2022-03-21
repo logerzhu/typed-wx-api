@@ -20,7 +20,7 @@ export abstract class WeixinJs extends WeixinBase {
       jsapi_ticket: ticket.ticket,
       nonceStr: nonceStr,
       timestamp: timestamp,
-      url: param.url
+      url: param.url.split('#')[0]
     })
 
     return {
