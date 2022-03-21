@@ -3,6 +3,10 @@ import { WxJsCrypto } from '../../crypto'
 import crypto from 'crypto'
 
 export abstract class WeixinIP extends WeixinBase {
+  /**
+   * 获取微信JS SDK Config的所需参数
+   * @param param
+   */
   async getJsConfig(param: {
     debug?: boolean
     jsApiList: string[]
@@ -30,6 +34,10 @@ export abstract class WeixinIP extends WeixinBase {
     }
   }
 
+  /**
+   * 获取微信JS SDK Config的所需参数
+   * @param param
+   */
   getCardExtConfig = async function (param: {
     card_id: string
     code?: string
