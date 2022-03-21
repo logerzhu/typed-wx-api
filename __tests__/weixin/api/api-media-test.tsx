@@ -2,7 +2,7 @@
 import { testWxApi } from '../config'
 import fs from 'fs'
 
-test('Test Weixin IP', async () => {
+test('Test Weixin Media', async () => {
   const image = await testWxApi.uploadImage(
     fs.readFileSync('./__tests__/resource/1.png'),
     '1.png'
