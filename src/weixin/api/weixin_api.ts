@@ -7,6 +7,8 @@ import { WeixinBase } from './weixin_base'
 import { WeixinQRCode } from './weixin_qrcode'
 import { WeixinMedia } from './weixin_media'
 import { WeixinMaterial } from './weixin_material'
+import { WeixinDraft } from './weixin_draft'
+import { WeixinFreePublish } from './weixin_freepublish'
 
 export interface WeixinApi
   extends WeixinBase,
@@ -15,7 +17,9 @@ export interface WeixinApi
     WeixinUser,
     WeixinQRCode,
     WeixinMedia,
-    WeixinMaterial {}
+    WeixinMaterial,
+    WeixinDraft,
+    WeixinFreePublish {}
 
 export class WeixinApi extends WeixinBase {
   readonly appid: string
@@ -40,5 +44,7 @@ applyMixins(WeixinApi, [
   WeixinUser,
   WeixinQRCode,
   WeixinMedia,
-  WeixinMaterial
+  WeixinMaterial,
+  WeixinDraft,
+  WeixinFreePublish
 ])

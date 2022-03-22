@@ -21,7 +21,7 @@ test('Test Weixin Material', async () => {
   expect(images.item[0].name != null).toBeTruthy()
   expect(images.item[0].url != null).toBeTruthy()
   expect(images.item[0].update_time != null).toBeTruthy()
-  await testWxApi.removeMaterial(media.media_id)
+  await testWxApi.deleteMaterial(media.media_id)
 
   // 测试视频永久素材
   const video = await testWxApi.uploadVideoMaterial(
@@ -35,7 +35,7 @@ test('Test Weixin Material', async () => {
   expect(videoInfo.title != null).toBeTruthy()
   expect(videoInfo.description != null).toBeTruthy()
   expect(videoInfo.down_url != null).toBeTruthy()
-  await testWxApi.removeMaterial(video.media_id)
+  await testWxApi.deleteMaterial(video.media_id)
 
   const count = await testWxApi.getMaterialCount()
   expect(count.image_count != null).toBeTruthy()

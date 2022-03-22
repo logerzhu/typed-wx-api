@@ -122,7 +122,7 @@ export abstract class WeixinMaterial extends WeixinBase {
   /**
    * 删除永久素材
    */
-  async removeMaterial(media_id: string) {
+  async deleteMaterial(media_id: string) {
     await this.request({
       method: 'post',
       url: 'material/del_material',
