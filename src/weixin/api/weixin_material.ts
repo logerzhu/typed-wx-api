@@ -65,66 +65,6 @@ export abstract class WeixinMaterial extends WeixinBase {
   }
 
   /**
-   * 新增永久图文素材
-   * @param {Object} news 图文对象
-   */
-  async uploadNewsMaterial(
-    news: {
-      title: string
-      /**
-       * 图文消息的封面图片素材id（必须是永久mediaID）
-       */
-      thumb_media_id: string
-      author?: string
-      /**
-       * 图文消息的摘要，仅有单图文消息才有摘要，多图文此处为空。如果本字段为没有填写，则默认抓取正文前54个字。
-       */
-      digest?: string
-      /**
-       * 图文消息的具体内容，支持HTML标签，必须少于2万字符，小于1M，且此处会去除JS,涉及图片url必须来源 "上传图文消息内的图片获取URL"接口获取。外部图片url将被过滤。
-       */
-      content: string
-      /**
-       * 图文消息的原文地址，即点击“阅读原文”后的URL
-       */
-      content_source_url: string
-      need_open_comment?: 0 | 1
-      only_fans_can_comment?: 0 | 1
-    }[]
-  ) {
-    const result = await this.request({
-      method: 'post',
-      url: 'material/add_news',
-      data: { articles: news }
-    })
-    return result as { media_id: string }
-  }
-
-  /**
-   * 获取图文消息(news)永久素材
-   * @param media_id
-   */
-  async getNewsMaterial(media_id: string) {
-    const result = await this.request({
-      method: 'post',
-      url: 'material/get_material',
-      data: { media_id: media_id }
-    })
-    return result as {
-      news_item: {
-        title: string
-        thumb_media_id: string
-        show_cover_pic: 0 | 1
-        author?: string
-        digest?: string
-        content: string
-        url: string
-        content_source_url: string
-      }[]
-    }
-  }
-
-  /**
    * 获取视频(video)永久素材
    * @param media_id
    */
@@ -156,31 +96,27 @@ export abstract class WeixinMaterial extends WeixinBase {
   }
 
   /**
-   * 更新永久图文素材
-   * @param news 图文对象
+   * 获取图文消息(news)永久素材
+   * @param media_id
    */
-  async updateNewsMaterial(news: {
-    media_id: string
-    /**
-     * 要更新的文章在图文消息中的位置（多图文消息时，此字段才有意义），第一篇为0
-     */
-    index: number
-    articles: {
-      title: string
-      thumb_media_id: string
-      author: string
-      digest: string
-      show_cover_pic: 0 | 1
-      content: string
-      content_source_url: string
-    }
-  }) {
-    await this.request({
+  async getNewsMaterial(media_id: string) {
+    const result = await this.request({
       method: 'post',
-      url: 'material/update_news',
-      data: news
+      url: 'material/get_material',
+      data: { media_id: media_id }
     })
-    return {}
+    return result as {
+      news_item: {
+        title: string
+        thumb_media_id: string
+        show_cover_pic: 0 | 1
+        author?: string
+        digest?: string
+        content: string
+        url: string
+        content_source_url: string
+      }[]
+    }
   }
 
   /**

@@ -72,6 +72,7 @@ export abstract class ApiBase {
         throw new WxAPIError(errmsg, errcode)
       }
     } catch (error) {
+      console.error('ErrorRequest:', opts.url)
       if (error instanceof WxAPIError) {
         throw error
       } else if (error.response) {

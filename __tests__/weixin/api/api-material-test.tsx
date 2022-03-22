@@ -3,7 +3,7 @@ import { testWxApi } from '../config'
 import fs from 'fs'
 
 test('Test Weixin Material', async () => {
-  // 测试图片永久素材
+  //测试图片永久素材
   const media = await testWxApi.uploadMaterial(
     fs.readFileSync('./__tests__/resource/1.png'),
     'image',
@@ -14,6 +14,13 @@ test('Test Weixin Material', async () => {
 
   const mediaFile = await testWxApi.getMaterial(media.media_id)
   expect(mediaFile != null).toBeTruthy()
+
+  const images = await testWxApi.getMaterials('image')
+  expect(images.item_count > 0).toBeTruthy()
+  expect(images.item[0].media_id != null).toBeTruthy()
+  expect(images.item[0].name != null).toBeTruthy()
+  expect(images.item[0].url != null).toBeTruthy()
+  expect(images.item[0].update_time != null).toBeTruthy()
   await testWxApi.removeMaterial(media.media_id)
 
   // 测试视频永久素材
@@ -30,5 +37,9 @@ test('Test Weixin Material', async () => {
   expect(videoInfo.down_url != null).toBeTruthy()
   await testWxApi.removeMaterial(video.media_id)
 
-  //测试图文永久素材
+  const count = await testWxApi.getMaterialCount()
+  expect(count.image_count != null).toBeTruthy()
+  expect(count.video_count != null).toBeTruthy()
+  expect(count.news_count != null).toBeTruthy()
+  expect(count.voice_count != null).toBeTruthy()
 })
