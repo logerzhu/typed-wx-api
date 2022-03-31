@@ -2,7 +2,7 @@
 import { testWxApi } from '../config'
 import fs from 'fs'
 
-test('Test Weixin Material', async () => {
+test('Test Weixin Draft', async () => {
   const cover = await testWxApi.uploadMaterial(
     fs.readFileSync('./__tests__/resource/1.png'),
     'image',
