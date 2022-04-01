@@ -10,7 +10,7 @@ import { WeixinBase } from './weixin_base'
  * 支付成功      20条       48小时
  */
 
-export type ReplyMessage =
+export type WxReplyMessage =
   | { type: 'text' | 'img' | 'voice' | 'video'; content: string }
   | {
       type: 'news'
@@ -118,8 +118,8 @@ export abstract class WeixinMessage extends WeixinBase {
     return result as {
       is_add_friend_reply_open: 0 | 1
       is_autoreply_open: 0 | 1
-      add_friend_autoreply_info?: ReplyMessage
-      message_default_autoreply_info?: ReplyMessage
+      add_friend_autoreply_info?: WxReplyMessage
+      message_default_autoreply_info?: WxReplyMessage
       keyword_autoreply_info?: {
         list: {
           rule_name: string
@@ -130,7 +130,7 @@ export abstract class WeixinMessage extends WeixinBase {
             match_mode: 'contain' | 'equal'
             content: string
           }[]
-          reply_list_info: ReplyMessage[]
+          reply_list_info: WxReplyMessage[]
         }[]
       }
     }

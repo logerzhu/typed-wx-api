@@ -1,9 +1,9 @@
 /* eslint-env jest */
 import { testWxApi } from '../config'
-import { Menu } from '../../../src/weixin/api/weixin_menu'
+import { WxMenu } from '../../../src/weixin/api/weixin_menu'
 
 test('Test Weixin Menu', async () => {
-  const menu: Menu = {
+  const menu: WxMenu = {
     button: [
       {
         name: 'Menu1',

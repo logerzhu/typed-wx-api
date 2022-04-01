@@ -1,5 +1,5 @@
 import { WeixinBase } from './weixin_base'
-import { DraftNews } from './weixin_draft'
+import { WxDraftNews } from './weixin_draft'
 
 export abstract class WeixinFreePublish extends WeixinBase {
   /**
@@ -80,7 +80,7 @@ export abstract class WeixinFreePublish extends WeixinBase {
       data: { article_id: article_id }
     })
     return result as {
-      news_item: (DraftNews & {
+      news_item: (WxDraftNews & {
         show_cover_pic?: 0 | 1
         url: string
         is_deleted: boolean
@@ -116,7 +116,7 @@ export abstract class WeixinFreePublish extends WeixinBase {
       item: {
         article_id: string
         content: {
-          news_item: (DraftNews & {
+          news_item: (WxDraftNews & {
             show_cover_pic?: 0 | 1
             url: string
             is_deleted: boolean

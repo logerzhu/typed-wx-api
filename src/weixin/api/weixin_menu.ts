@@ -1,6 +1,6 @@
 import { WeixinBase } from './weixin_base'
 
-export type ButtonItem = {
+export type WxButtonItem = {
   /**
    * 一级菜单最多4个汉字，二级菜单最多8个汉字，多出来的部分将会以“...”代替
    */
@@ -55,15 +55,15 @@ export type ButtonItem = {
  * 自定义菜单最多包括3个一级菜单，每个一级菜单最多包含5个二级菜单
  */
 export type Button =
-  | ButtonItem
-  | { name: string; type?: undefined; sub_button: ButtonItem[] }
+  | WxButtonItem
+  | { name: string; type?: undefined; sub_button: WxButtonItem[] }
 
-export type Menu = { button: Button[] }
+export type WxMenu = { button: Button[] }
 
 /**
  * 在公众平台官网通过网站功能发布的菜单项
  */
-export type MPButtonItem = { name: string } & (
+export type WxMpButtonItem = { name: string } & (
   | {
       type: 'text' | 'img' | 'voice' | 'video'
       value: string
@@ -91,7 +91,7 @@ export abstract class WeixinMenu extends WeixinBase {
    * 创建自定义菜单
    * @param menu
    */
-  async createMenu(menu: Menu) {
+  async createMenu(menu: WxMenu) {
     const result = await this.request({
       method: 'post',
       url: 'menu/create',
@@ -110,7 +110,7 @@ export abstract class WeixinMenu extends WeixinBase {
     })
     return result as
       | {
-          menu: Menu
+          menu: WxMenu
         }
       | {
           menu?: {
@@ -155,11 +155,11 @@ export abstract class WeixinMenu extends WeixinBase {
     return result as {
       is_menu_open: 0 | 1
       selfmenu_info:
-        | Menu
+        | WxMenu
         | {
             button:
-              | MPButtonItem
-              | { name: string; type?: undefined; sub_button: MPButtonItem[] }
+              | WxMpButtonItem
+              | { name: string; type?: undefined; sub_button: WxMpButtonItem[] }
           }
     }
   }
@@ -209,6 +209,6 @@ export abstract class WeixinMenu extends WeixinBase {
       url: 'menu/trymatch',
       data: { user_id: user_id }
     })
-    return result as Menu
+    return result as WxMenu
   }
 }

@@ -1,6 +1,6 @@
 import { WeixinBase } from './weixin_base'
 
-export type DraftNews = {
+export type WxDraftNews = {
   title: string
   author?: string
   /**
@@ -31,7 +31,7 @@ export abstract class WeixinDraft extends WeixinBase {
    * 新建草稿
    * @param {Object} draft 草稿
    */
-  async addDraft(draft: DraftNews[]) {
+  async addDraft(draft: WxDraftNews[]) {
     const result = await this.request({
       method: 'post',
       url: 'draft/add',
@@ -51,7 +51,7 @@ export abstract class WeixinDraft extends WeixinBase {
       data: { media_id: media_id }
     })
     return result as {
-      news_item: (DraftNews & {
+      news_item: (WxDraftNews & {
         show_cover_pic?: 0 | 1
         url: string
       })[]
@@ -80,7 +80,7 @@ export abstract class WeixinDraft extends WeixinBase {
      * 要更新的文章在图文消息中的位置（多图文消息时，此字段才有意义），第一篇为0
      */
     index: number
-    articles: DraftNews
+    articles: WxDraftNews
   }) {
     await this.request({
       method: 'post',
@@ -131,7 +131,7 @@ export abstract class WeixinDraft extends WeixinBase {
       item: {
         media_id: string
         content: {
-          news_item: (DraftNews & {
+          news_item: (WxDraftNews & {
             show_cover_pic?: 0 | 1
             url: string
           })[]
