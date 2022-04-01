@@ -11,6 +11,7 @@ import { WeixinDraft } from './weixin_draft'
 import { WeixinFreePublish } from './weixin_freepublish'
 import { WeixinOpenApi } from './weixin_open_api'
 import { WeixinMenu } from './weixin_menu'
+import { WeixinMessage } from './weixin_message'
 
 export interface WeixinApi
   extends WeixinBase,
@@ -23,7 +24,8 @@ export interface WeixinApi
     WeixinDraft,
     WeixinFreePublish,
     WeixinOpenApi,
-    WeixinMenu {}
+    WeixinMenu,
+    WeixinMessage {}
 
 export class WeixinApi extends WeixinBase {
   readonly appid: string
@@ -52,5 +54,6 @@ applyMixins(WeixinApi, [
   WeixinDraft,
   WeixinFreePublish,
   WeixinOpenApi,
-  WeixinMenu
+  WeixinMenu,
+  WeixinMessage
 ])
