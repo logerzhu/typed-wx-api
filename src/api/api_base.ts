@@ -59,7 +59,7 @@ export abstract class ApiBase {
 
     try {
       const res = await this.axiosInstance.request(opts)
-      this.logger('WxRequest', opts, res)
+      this.logger('WxRequest', opts, res.data)
       if (res.status < 200 || res.status > 204) {
         throw new WxAPIError(`url: ${opts.url}, status code: ${res.status}`, -1)
       }
