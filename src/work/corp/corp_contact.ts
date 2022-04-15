@@ -82,7 +82,9 @@ export abstract class CorpContact extends CorpBase {
     })
     delete result.errcode
     delete result.errmsg
-    const contact = result as ExternalContactUser & {
+    const contact = result as {
+      external_contact: ExternalContactUser
+    } & {
       follow_user: FollowUser[]
     }
     let cursor = result.next_cursor

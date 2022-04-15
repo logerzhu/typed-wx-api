@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import { corpApi, testUserid, testExternalUserid } from '../config'
+import { corpApi, testExternalUserid, testUserid } from '../config'
 
 test('Test CorpContact Api', async () => {
   const users = await corpApi.getFollowUserList()
@@ -11,6 +11,7 @@ test('Test CorpContact Api', async () => {
   const contact = await corpApi.getExternalContact(contacts[0])
   expect(
     contact != null &&
+      contact.external_contact != null &&
       contact.follow_user.find((u) => u.userid === testUserid) != null
   ).toBeTruthy()
 
