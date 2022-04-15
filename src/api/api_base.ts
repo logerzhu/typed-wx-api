@@ -14,11 +14,15 @@ export type APIConfig = {
   accessTokenKey?: string
 }
 
+export type Logger = (message: any, ...args: any[]) => void
+
 export abstract class ApiBase {
   readonly config: Required<APIConfig>
   private tokenStorage: TokenStorage
   private ticketStorage: TicketStorage
   private axiosInstance: AxiosInstance
+
+  logger: Logger = () => {}
 
   constructor(
     config: APIConfig,
@@ -55,6 +59,7 @@ export abstract class ApiBase {
 
     try {
       const res = await this.axiosInstance.request(opts)
+      this.logger('WxRequest', opts, res)
       if (res.status < 200 || res.status > 204) {
         throw new WxAPIError(`url: ${opts.url}, status code: ${res.status}`, -1)
       }
