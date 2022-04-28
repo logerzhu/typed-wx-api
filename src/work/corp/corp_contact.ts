@@ -4,7 +4,7 @@ export type FollowUser = {
   userid: string //添加了此外部联系人的企业成员userid
   remark?: string //该成员对此外部联系人的备注
   description?: string // 该成员对此外部联系人的描述
-  createtime?: number //该成员添加此外部联系人的时间
+  createtime: number //该成员添加此外部联系人的时间
   tags?: {
     group_name?: string // 该成员添加此外部联系人所打标签的分组名称（标签功能需要企业微信升级到2.7.5及以上版本）
     tag_name: string //该成员添加此外部联系人所打标签名称
@@ -28,7 +28,12 @@ export type FollowUser = {
   202	管理员/负责人分配
   */
   add_way: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 201 | 202 //该成员添加此客户的来源，具体含义详见来源定义
-  wechat_channels?: { nickname: string } //该成员添加此客户的来源add_way为10时，对应的视频号信息
+  //该成员添加此客户的来源add_way为10时，对应的视频号信息
+  wechat_channels?: {
+    nickname: string
+    //视频号添加场景，0-未知 1-视频号主页 2-视频号直播间（微信版本要求：iOS ≥ 8.0.20，Android ≥ 8.0.21，且添加时间不早于2022年4月21日。否则添加场景值为0）
+    source?: 0 | 1 | 2
+  }
   oper_userid?: string //发起添加的userid，如果成员主动添加，为成员的userid；如果是客户主动添加，则为客户的外部联系人userid；如果是内部成员共享/管理员分配，则为对应的成员/管理员userid
   state?: string //企业自定义的state参数，用于区分客户具体是通过哪个「联系我」添加，由企业通过创建「联系我」方式指定
 }
