@@ -11,6 +11,7 @@ import { CorpBase } from './corp_base'
 import { CorpMedia } from './corp_media'
 import { WxAPIError } from '../../errors'
 import { CorpTag } from './corp_tag'
+import { CorpMessage } from './corp_message'
 
 export interface CorpApi
   extends CorpJs,
@@ -21,7 +22,8 @@ export interface CorpApi
     CorpGroupChat,
     CorpMsgAudit,
     CorpMedia,
-    CorpTag {}
+    CorpTag,
+    CorpMessage {}
 
 export class CorpApi extends CorpBase {
   constructor(
@@ -55,5 +57,6 @@ applyMixins(CorpApi, [
   CorpGroupChat,
   CorpMsgAudit,
   CorpMedia,
-  CorpTag
+  CorpTag,
+  CorpMessage
 ])
