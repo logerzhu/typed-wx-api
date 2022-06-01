@@ -212,158 +212,168 @@ export type TemplateCardQuoteArea = TemplateCardArea & {
   quote_text?: string
 }
 
+export type TextNoticeTemplateCard = {
+  card_type: 'text_notice'
+  /** 卡片来源样式信息 */
+  source?: TemplateCardSource
+  /** 卡片右上角更多操作按钮*/
+  action_menu?: TemplateCardActionMenu
+  /** 任务id，同一个应用任务id不能重复，只能由数字、字母和“_-@”组成，最长128字节，填了action_menu字段的话本字段必填*/
+  task_id?: string
+  main_title?: TemplateCardMainTitle
+  /** 引用文献样式*/
+  quote_area?: TemplateCardQuoteArea
+  /** 关键数据样式*/
+  emphasis_content?: {
+    /** 关键数据样式的数据内容，建议不超过14个字*/
+    title: string
+    /** 关键数据样式的数据描述内容，建议不超过22个字*/
+    desc?: string
+  }
+  /** 二级普通文本，建议不超过160个字，（支持id转译） */
+  sub_title_text?: string
+  /** 二级标题+文本列表，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过6*/
+  horizontal_content_list?: TemplateCardHorizontalContent[]
+  /** 跳转指引样式的列表，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过3*/
+  jump_list?: TemplateCardJump[]
+  /** 整体卡片的点击跳转事件，text_notice必填本字段*/
+  card_action: TemplateCardAction
+}
+
+export type NewsNoticeTemplateCard = {
+  card_type: 'news_notice'
+  /** 卡片来源样式信息 */
+  source?: TemplateCardSource
+  /** 卡片右上角更多操作按钮*/
+  action_menu?: TemplateCardActionMenu
+  /** 任务id，同一个应用任务id不能重复，只能由数字、字母和“_-@”组成，最长128字节，填了action_menu字段的话本字段必填*/
+  task_id?: string
+  main_title?: TemplateCardMainTitle
+  /** 引用文献样式*/
+  quote_area?: TemplateCardQuoteArea
+
+  /** 左图右文样式，news_notice类型的卡片，card_image和image_text_area两者必填一个字段，不可都不填*/
+  image_text_area?: TemplateCardArea & {
+    /** 左图右文样式的标题*/
+    title?: string
+    /** 左图右文样式的描述*/
+    desc?: string
+    /** 左图右文样式的图片url*/
+    image_url: string
+  }
+  /** 图片样式，news_notice类型的卡片，card_image和image_text_area两者必填一个字段，不可都不填*/
+  card_image?: {
+    url: string
+    /**  图片的宽高比，宽高比要小于2.25，大于1.3，不填该参数默认1.3*/
+    aspect_ratio: number
+  }
+  /** 卡片二级垂直内容，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过4*/
+  vertical_content_list: {
+    /** 卡片二级标题，建议不超过38个字*/
+    title: string
+    /** 二级普通文本，建议不超过160个字*/
+    desc?: string
+  }[]
+  /** 二级标题+文本列表，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过6*/
+  horizontal_content_list?: TemplateCardHorizontalContent[]
+  /** 跳转指引样式的列表，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过3*/
+  jump_list?: TemplateCardJump[]
+  /** 整体卡片的点击跳转事件，text_notice必填本字段*/
+  card_action: TemplateCardAction
+}
+
+export type ButtonInteraction = {
+  card_type: 'button_interaction'
+  /** 卡片来源样式信息 */
+  source?: TemplateCardSource
+  /** 卡片右上角更多操作按钮*/
+  action_menu?: TemplateCardActionMenu
+  /** 任务id，同一个应用任务id不能重复，只能由数字、字母和“_-@”组成，最长128字节，填了action_menu字段的话本字段必填*/
+  task_id?: string
+  main_title?: TemplateCardMainTitle
+  /** 引用文献样式*/
+  quote_area?: TemplateCardQuoteArea
+  /** 二级普通文本，建议不超过160个字，（支持id转译） */
+  sub_title_text?: string
+
+  button_selection: {
+    /** 下拉式的选择器的key，用户提交选项后，会产生回调事件，回调事件会带上该key值表示该题，最长支持1024字节 */
+    question_key: string
+    /** 下拉式的选择器左边的标题*/
+    title?: string
+    /** 选项列表，下拉选项不超过 10 个，最少1个*/
+    option_list: {
+      /** 下拉式的选择器选项的id，用户提交后，会产生回调事件，回调事件会带上该id值表示该选项，最长支持128字节，不可重复*/
+      id: string
+      /** 下拉式的选择器选项的文案，建议不超过16个字*/
+      text: string
+    }[]
+    /** 默认选定的id，不填或错填默认第一个*/
+    selected_id?: string
+  }
+  /** 按钮列表，列表长度不超过6*/
+  button_list: {
+    /** 按钮点击事件类型，0 或不填代表回调点击事件，1 代表跳转url */
+    type?: 0 | 1
+    /** 按钮文案，建议不超过10个字*/
+    text: string
+    /** 按钮样式，目前可填1~4，不填或错填默认1 */
+    style?: 1 | 2 | 3 | 4
+    /** 按钮key值，用户点击后，会产生回调事件将本参数作为EventKey返回，回调事件会带上该key值，最长支持1024字节，不可重复，button_list.type是0时必填*/
+    key?: string
+    /** 跳转事件的url，button_list.type是1时必填*/
+    url?: string
+  }[]
+
+  /** 二级标题+文本列表，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过6*/
+  horizontal_content_list?: TemplateCardHorizontalContent[]
+  /** 跳转指引样式的列表，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过3*/
+  jump_list?: TemplateCardJump[]
+  /** 整体卡片的点击跳转事件，text_notice必填本字段*/
+  card_action: TemplateCardAction
+}
+
+export type VoteInteraction = {
+  card_type: 'vote_interaction'
+  /** 卡片来源样式信息 */
+  source?: TemplateCardSource
+  /** 任务id，同一个应用任务id不能重复，只能由数字、字母和“_-@”组成，最长128字节*/
+  task_id: string
+  main_title?: TemplateCardMainTitle
+
+  checkbox: {
+    /** 选择题key值，用户提交选项后，会产生回调事件，回调事件会带上该key值表示该题，最长支持1024字节 */
+    question_key: string
+    /** 选项list，选项个数不超过 20 个，最少1个*/
+    option_list: {
+      /** 选项id，用户提交选项后，会产生回调事件，回调事件会带上该id值表示该选项，最长支持128字节，不可重复*/
+      id: string
+      /** 选项文案描述，建议不超过17个字*/
+      text: string
+      /** 该选项是否要默认选中 */
+      is_checked: boolean
+    }[]
+    /** 选择题模式，单选：0，多选：1，不填默认0*/
+    mode?: 0 | 1
+  }
+  /** 提交按钮样式*/
+  submit_button?: {
+    /** 按钮文案，建议不超过10个字，不填默认为提交*/
+    text: string
+    /** 提交按钮的key，会产生回调事件将本参数作为EventKey返回，最长支持1024字节*/
+    key: string
+  }
+}
+
+export type TemplateCard =
+  | TextNoticeTemplateCard
+  | NewsNoticeTemplateCard
+  | ButtonInteraction
+  | VoteInteraction
+
 export type TemplateCardMessage = {
   msgtype: 'template_card'
-  template_card:
-    | {
-        card_type: 'text_notice'
-        /** 卡片来源样式信息 */
-        source?: TemplateCardSource
-        /** 卡片右上角更多操作按钮*/
-        action_menu?: TemplateCardActionMenu
-        /** 任务id，同一个应用任务id不能重复，只能由数字、字母和“_-@”组成，最长128字节，填了action_menu字段的话本字段必填*/
-        task_id?: string
-        main_title?: TemplateCardMainTitle
-        /** 引用文献样式*/
-        quote_area?: TemplateCardQuoteArea
-        /** 关键数据样式*/
-        emphasis_content?: {
-          /** 关键数据样式的数据内容，建议不超过14个字*/
-          title: string
-          /** 关键数据样式的数据描述内容，建议不超过22个字*/
-          desc?: string
-        }
-        /** 二级普通文本，建议不超过160个字，（支持id转译） */
-        sub_title_text?: string
-        /** 二级标题+文本列表，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过6*/
-        horizontal_content_list?: TemplateCardHorizontalContent[]
-        /** 跳转指引样式的列表，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过3*/
-        jump_list?: TemplateCardJump[]
-        /** 整体卡片的点击跳转事件，text_notice必填本字段*/
-        card_action: TemplateCardAction
-      }
-    | {
-        card_type: 'news_notice'
-        /** 卡片来源样式信息 */
-        source?: TemplateCardSource
-        /** 卡片右上角更多操作按钮*/
-        action_menu?: TemplateCardActionMenu
-        /** 任务id，同一个应用任务id不能重复，只能由数字、字母和“_-@”组成，最长128字节，填了action_menu字段的话本字段必填*/
-        task_id?: string
-        main_title?: TemplateCardMainTitle
-        /** 引用文献样式*/
-        quote_area?: TemplateCardQuoteArea
-
-        /** 左图右文样式，news_notice类型的卡片，card_image和image_text_area两者必填一个字段，不可都不填*/
-        image_text_area?: TemplateCardArea & {
-          /** 左图右文样式的标题*/
-          title?: string
-          /** 左图右文样式的描述*/
-          desc?: string
-          /** 左图右文样式的图片url*/
-          image_url: string
-        }
-        /** 图片样式，news_notice类型的卡片，card_image和image_text_area两者必填一个字段，不可都不填*/
-        card_image?: {
-          url: string
-          /**  图片的宽高比，宽高比要小于2.25，大于1.3，不填该参数默认1.3*/
-          aspect_ratio: number
-        }
-        /** 卡片二级垂直内容，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过4*/
-        vertical_content_list: {
-          /** 卡片二级标题，建议不超过38个字*/
-          title: string
-          /** 二级普通文本，建议不超过160个字*/
-          desc?: string
-        }[]
-        /** 二级标题+文本列表，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过6*/
-        horizontal_content_list?: TemplateCardHorizontalContent[]
-        /** 跳转指引样式的列表，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过3*/
-        jump_list?: TemplateCardJump[]
-        /** 整体卡片的点击跳转事件，text_notice必填本字段*/
-        card_action: TemplateCardAction
-      }
-    | {
-        card_type: 'button_interaction'
-        /** 卡片来源样式信息 */
-        source?: TemplateCardSource
-        /** 卡片右上角更多操作按钮*/
-        action_menu?: TemplateCardActionMenu
-        /** 任务id，同一个应用任务id不能重复，只能由数字、字母和“_-@”组成，最长128字节，填了action_menu字段的话本字段必填*/
-        task_id?: string
-        main_title?: TemplateCardMainTitle
-        /** 引用文献样式*/
-        quote_area?: TemplateCardQuoteArea
-        /** 二级普通文本，建议不超过160个字，（支持id转译） */
-        sub_title_text?: string
-
-        button_selection: {
-          /** 下拉式的选择器的key，用户提交选项后，会产生回调事件，回调事件会带上该key值表示该题，最长支持1024字节 */
-          question_key: string
-          /** 下拉式的选择器左边的标题*/
-          title?: string
-          /** 选项列表，下拉选项不超过 10 个，最少1个*/
-          option_list: {
-            /** 下拉式的选择器选项的id，用户提交后，会产生回调事件，回调事件会带上该id值表示该选项，最长支持128字节，不可重复*/
-            id: string
-            /** 下拉式的选择器选项的文案，建议不超过16个字*/
-            text: string
-          }[]
-          /** 默认选定的id，不填或错填默认第一个*/
-          selected_id?: string
-        }
-        /** 按钮列表，列表长度不超过6*/
-        button_list: {
-          /** 按钮点击事件类型，0 或不填代表回调点击事件，1 代表跳转url */
-          type?: 0 | 1
-          /** 按钮文案，建议不超过10个字*/
-          text: string
-          /** 按钮样式，目前可填1~4，不填或错填默认1 */
-          style?: 1 | 2 | 3 | 4
-          /** 按钮key值，用户点击后，会产生回调事件将本参数作为EventKey返回，回调事件会带上该key值，最长支持1024字节，不可重复，button_list.type是0时必填*/
-          key?: string
-          /** 跳转事件的url，button_list.type是1时必填*/
-          url?: string
-        }[]
-
-        /** 二级标题+文本列表，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过6*/
-        horizontal_content_list?: TemplateCardHorizontalContent[]
-        /** 跳转指引样式的列表，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过3*/
-        jump_list?: TemplateCardJump[]
-        /** 整体卡片的点击跳转事件，text_notice必填本字段*/
-        card_action: TemplateCardAction
-      }
-    | {
-        card_type: 'vote_interaction'
-        /** 卡片来源样式信息 */
-        source?: TemplateCardSource
-        /** 任务id，同一个应用任务id不能重复，只能由数字、字母和“_-@”组成，最长128字节*/
-        task_id: string
-        main_title?: TemplateCardMainTitle
-
-        checkbox: {
-          /** 选择题key值，用户提交选项后，会产生回调事件，回调事件会带上该key值表示该题，最长支持1024字节 */
-          question_key: string
-          /** 选项list，选项个数不超过 20 个，最少1个*/
-          option_list: {
-            /** 选项id，用户提交选项后，会产生回调事件，回调事件会带上该id值表示该选项，最长支持128字节，不可重复*/
-            id: string
-            /** 选项文案描述，建议不超过17个字*/
-            text: string
-            /** 该选项是否要默认选中 */
-            is_checked: boolean
-          }[]
-          /** 选择题模式，单选：0，多选：1，不填默认0*/
-          mode?: 0 | 1
-        }
-        /** 提交按钮样式*/
-        submit_button?: {
-          /** 按钮文案，建议不超过10个字，不填默认为提交*/
-          text: string
-          /** 提交按钮的key，会产生回调事件将本参数作为EventKey返回，最长支持1024字节*/
-          key: string
-        }
-      }
+  template_card: TemplateCard
 }
 
 export abstract class CorpMessage extends CorpBase {
@@ -419,5 +429,20 @@ export abstract class CorpMessage extends CorpBase {
       /** 仅消息类型为“按钮交互型”，“投票选择型”和“多项选择型”的模板卡片消息返回，应用可使用response_code调用更新模版卡片消息接口，24小时内有效，且只能使用一次*/
       response_code?: string
     }
+  }
+
+  /**
+   * 撤回应用消息
+   *
+   * 本接口可以撤回24小时内通过发送应用消息接口推送的消息，仅可撤回企业微信端的数据，微信插件端的数据不支持撤回。
+   * @param msgid
+   */
+  async recallMessage(msgid: string) {
+    const result = await this.request({
+      method: 'post',
+      url: 'message/recall',
+      data: { msgid: msgid }
+    })
+    return result as {}
   }
 }

@@ -11,4 +11,5 @@ test('Test CorpJS Api', async () => {
     }
   })
   expect(result.msgid != null).toBeTruthy()
+  await monitorCorpApi.recallMessage(result.msgid)
 })
