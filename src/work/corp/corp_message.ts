@@ -376,6 +376,19 @@ export type TemplateCardMessage = {
   template_card: TemplateCard
 }
 
+export type AgentMessage =
+  | TextMessage
+  | ImageMessage
+  | VoiceMessage
+  | VideoMessage
+  | FileMessage
+  | TextCardMessage
+  | NewsMessage
+  | MpNewsMessage
+  | MarkdownMessage
+  | MiniprogramNoticeMessage
+  | TemplateCardMessage
+
 export abstract class CorpMessage extends CorpBase {
   /**
    * 应用支持推送文本、图片、视频、文件、图文等类型。
@@ -396,19 +409,7 @@ export abstract class CorpMessage extends CorpBase {
       enable_duplicate_check?: 0 | 1
       /** 表示是否重复消息检查的时间间隔，默认1800s，最大不超过4小时     */
       duplicate_check_interval?: number
-    } & (
-      | TextMessage
-      | ImageMessage
-      | VoiceMessage
-      | VideoMessage
-      | FileMessage
-      | TextCardMessage
-      | NewsMessage
-      | MpNewsMessage
-      | MarkdownMessage
-      | MiniprogramNoticeMessage
-      | TemplateCardMessage
-    )
+    } & AgentMessage
   ) {
     const result = await this.request({
       method: 'post',
