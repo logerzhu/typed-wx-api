@@ -3,7 +3,7 @@ import { WeixinBase } from './weixin_base'
 /**
  * @internal
  */
-export abstract class WeixinOpenApi extends WeixinBase {
+export abstract class WeixinOpenAPI extends WeixinBase {
   /**
    * 查询openAPI调用quota
    *

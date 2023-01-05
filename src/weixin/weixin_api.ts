@@ -10,12 +10,12 @@ import {
   WeixinMedia,
   WeixinMenu,
   WeixinMessage,
-  WeixinOpenApi,
+  WeixinOpenAPI,
   WeixinQRCode,
   WeixinUser
 } from './api'
 
-export interface WeixinApi
+export interface WeixinAPI
   extends WeixinBase,
     WeixinIP,
     WeixinJs,
@@ -25,11 +25,11 @@ export interface WeixinApi
     WeixinMaterial,
     WeixinDraft,
     WeixinFreePublish,
-    WeixinOpenApi,
+    WeixinOpenAPI,
     WeixinMenu,
     WeixinMessage {}
 
-export class WeixinApi extends WeixinBase {
+export class WeixinAPI extends WeixinBase {
   readonly appid: string
   readonly secret: string
 
@@ -46,7 +46,7 @@ export class WeixinApi extends WeixinBase {
   }
 }
 
-applyMixins(WeixinApi, [
+applyMixins(WeixinAPI, [
   WeixinIP,
   WeixinJs,
   WeixinUser,
@@ -55,7 +55,7 @@ applyMixins(WeixinApi, [
   WeixinMaterial,
   WeixinDraft,
   WeixinFreePublish,
-  WeixinOpenApi,
+  WeixinOpenAPI,
   WeixinMenu,
   WeixinMessage
 ])

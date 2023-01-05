@@ -1,6 +1,6 @@
-[typed-wx-api](../README.md) / [Exports](../modules.md) / CorpApi
+[typed-wx-api](../README.md) / [Exports](../modules.md) / CorpAPI
 
-# Class: CorpApi
+# Class: CorpAPI
 
 ## Hierarchy
 
@@ -26,115 +26,115 @@
 
 - `CorpBase`
 
-  ↳ **`CorpApi`**
+  ↳ **`CorpAPI`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](CorpApi.md#constructor)
+- [constructor](CorpAPI.md#constructor)
 
 ### Properties
 
-- [config](CorpApi.md#config)
-- [logger](CorpApi.md#logger)
-- [corpid](CorpApi.md#corpid)
-- [corpSecret](CorpApi.md#corpsecret)
-- [agentid](CorpApi.md#agentid)
+- [config](CorpAPI.md#config)
+- [logger](CorpAPI.md#logger)
+- [corpid](CorpAPI.md#corpid)
+- [corpSecret](CorpAPI.md#corpsecret)
+- [agentid](CorpAPI.md#agentid)
 
 ### Methods
 
-- [request](CorpApi.md#request)
-- [getAccessToken](CorpApi.md#getaccesstoken)
-- [ensureAccessToken](CorpApi.md#ensureaccesstoken)
-- [getTicket](CorpApi.md#getticket)
-- [ensureTicket](CorpApi.md#ensureticket)
-- [pkcs7Decoder](CorpApi.md#pkcs7decoder)
-- [pkcs7Encoder](CorpApi.md#pkcs7encoder)
-- [initCrypto](CorpApi.md#initcrypto)
-- [rawSignature](CorpApi.md#rawsignature)
-- [encrypt](CorpApi.md#encrypt)
-- [decrypt](CorpApi.md#decrypt)
-- [resolveAccessToken](CorpApi.md#resolveaccesstoken)
-- [resolveTicket](CorpApi.md#resolveticket)
+- [request](CorpAPI.md#request)
+- [getAccessToken](CorpAPI.md#getaccesstoken)
+- [ensureAccessToken](CorpAPI.md#ensureaccesstoken)
+- [getTicket](CorpAPI.md#getticket)
+- [ensureTicket](CorpAPI.md#ensureticket)
+- [pkcs7Decoder](CorpAPI.md#pkcs7decoder)
+- [pkcs7Encoder](CorpAPI.md#pkcs7encoder)
+- [initCrypto](CorpAPI.md#initcrypto)
+- [rawSignature](CorpAPI.md#rawsignature)
+- [encrypt](CorpAPI.md#encrypt)
+- [decrypt](CorpAPI.md#decrypt)
+- [resolveAccessToken](CorpAPI.md#resolveaccesstoken)
+- [resolveTicket](CorpAPI.md#resolveticket)
 
 ### 客户
 
-- [getFollowUserList](CorpApi.md#getfollowuserlist)
-- [getExternalContactList](CorpApi.md#getexternalcontactlist)
-- [getExternalContact](CorpApi.md#getexternalcontact)
-- [batchGetExternalContact](CorpApi.md#batchgetexternalcontact)
-- [remarkExternalContact](CorpApi.md#remarkexternalcontact)
+- [getFollowUserList](CorpAPI.md#getfollowuserlist)
+- [getExternalContactList](CorpAPI.md#getexternalcontactlist)
+- [getExternalContact](CorpAPI.md#getexternalcontact)
+- [batchGetExternalContact](CorpAPI.md#batchgetexternalcontact)
+- [remarkExternalContact](CorpAPI.md#remarkexternalcontact)
 
 ### 客户群
 
-- [listGroupChat](CorpApi.md#listgroupchat)
-- [getGroupChat](CorpApi.md#getgroupchat)
-- [opengidToChatid](CorpApi.md#opengidtochatid)
+- [listGroupChat](CorpAPI.md#listgroupchat)
+- [getGroupChat](CorpAPI.md#getgroupchat)
+- [opengidToChatid](CorpAPI.md#opengidtochatid)
 
 ### JS_SDK
 
-- [getJsApiTicket](CorpApi.md#getjsapiticket)
-- [getJsApiAgentTicket](CorpApi.md#getjsapiagentticket)
-- [getJsConfig](CorpApi.md#getjsconfig)
-- [getAgentJsConfig](CorpApi.md#getagentjsconfig)
+- [getJsApiTicket](CorpAPI.md#getjsapiticket)
+- [getJsApiAgentTicket](CorpAPI.md#getjsapiagentticket)
+- [getJsConfig](CorpAPI.md#getjsconfig)
+- [getAgentJsConfig](CorpAPI.md#getagentjsconfig)
 
 ### 素材
 
-- [uploadMedia](CorpApi.md#uploadmedia)
-- [uploadImage](CorpApi.md#uploadimage)
-- [getMediaHD](CorpApi.md#getmediahd)
-- [getMedia](CorpApi.md#getmedia)
+- [uploadMedia](CorpAPI.md#uploadmedia)
+- [uploadImage](CorpAPI.md#uploadimage)
+- [getMediaHD](CorpAPI.md#getmediahd)
+- [getMedia](CorpAPI.md#getmedia)
 
 ### 消息
 
-- [sendMessage](CorpApi.md#sendmessage)
-- [recallMessage](CorpApi.md#recallmessage)
+- [sendMessage](CorpAPI.md#sendmessage)
+- [recallMessage](CorpAPI.md#recallmessage)
 
 ### 会话存档
 
-- [getRoom](CorpApi.md#getroom)
+- [getRoom](CorpAPI.md#getroom)
 
 ### 群发消息
 
-- [addMsgTemplate](CorpApi.md#addmsgtemplate)
-- [getGroupMsgList](CorpApi.md#getgroupmsglist)
-- [getGroupMsgTask](CorpApi.md#getgroupmsgtask)
-- [getGroupMsgResult](CorpApi.md#getgroupmsgresult)
-- [getGroupMsgSendResult](CorpApi.md#getgroupmsgsendresult)
+- [addMsgTemplate](CorpAPI.md#addmsgtemplate)
+- [getGroupMsgList](CorpAPI.md#getgroupmsglist)
+- [getGroupMsgTask](CorpAPI.md#getgroupmsgtask)
+- [getGroupMsgResult](CorpAPI.md#getgroupmsgresult)
+- [getGroupMsgSendResult](CorpAPI.md#getgroupmsgsendresult)
 
 ### 授权登录
 
-- [getAuthorizeURL](CorpApi.md#getauthorizeurl)
-- [getUseridByCode](CorpApi.md#getuseridbycode)
+- [getAuthorizeURL](CorpAPI.md#getauthorizeurl)
+- [getUseridByCode](CorpAPI.md#getuseridbycode)
 
 ### 标签
 
-- [getCorpTagList](CorpApi.md#getcorptaglist)
-- [addCorpTag](CorpApi.md#addcorptag)
-- [editCorpTag](CorpApi.md#editcorptag)
-- [delCorpTag](CorpApi.md#delcorptag)
-- [markTag](CorpApi.md#marktag)
+- [getCorpTagList](CorpAPI.md#getcorptaglist)
+- [addCorpTag](CorpAPI.md#addcorptag)
+- [editCorpTag](CorpAPI.md#editcorptag)
+- [delCorpTag](CorpAPI.md#delcorptag)
+- [markTag](CorpAPI.md#marktag)
 
 ### 成员
 
-- [createUser](CorpApi.md#createuser)
-- [getUser](CorpApi.md#getuser)
-- [updateUser](CorpApi.md#updateuser)
-- [deleteUser](CorpApi.md#deleteuser)
-- [deleteUsers](CorpApi.md#deleteusers)
-- [getDepartmentSimpleList](CorpApi.md#getdepartmentsimplelist)
-- [getDepartmentUserList](CorpApi.md#getdepartmentuserlist)
-- [useridToOpenid](CorpApi.md#useridtoopenid)
-- [openidToUserid](CorpApi.md#openidtouserid)
-- [authSuccess](CorpApi.md#authsuccess)
-- [getUserid](CorpApi.md#getuserid)
+- [createUser](CorpAPI.md#createuser)
+- [getUser](CorpAPI.md#getuser)
+- [updateUser](CorpAPI.md#updateuser)
+- [deleteUser](CorpAPI.md#deleteuser)
+- [deleteUsers](CorpAPI.md#deleteusers)
+- [getDepartmentSimpleList](CorpAPI.md#getdepartmentsimplelist)
+- [getDepartmentUserList](CorpAPI.md#getdepartmentuserlist)
+- [useridToOpenid](CorpAPI.md#useridtoopenid)
+- [openidToUserid](CorpAPI.md#openidtouserid)
+- [authSuccess](CorpAPI.md#authsuccess)
+- [getUserid](CorpAPI.md#getuserid)
 
 ## Constructors
 
 ### constructor
 
-• **new CorpApi**(`config`, `tokenStorage?`, `ticketStorage?`)
+• **new CorpAPI**(`config`, `tokenStorage?`, `ticketStorage?`)
 
 #### Parameters
 

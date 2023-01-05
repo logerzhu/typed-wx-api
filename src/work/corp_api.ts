@@ -15,7 +15,7 @@ import {
   CorpUser
 } from './corp'
 
-export interface CorpApi
+export interface CorpAPI
   extends CorpJs,
     CorpUser,
     CorpOAuth,
@@ -27,7 +27,7 @@ export interface CorpApi
     CorpTag,
     CorpMessage {}
 
-export class CorpApi extends CorpBase {
+export class CorpAPI extends CorpBase {
   constructor(
     config: {
       corpid: string
@@ -50,7 +50,7 @@ export class CorpApi extends CorpBase {
   }
 }
 
-applyMixins(CorpApi, [
+applyMixins(CorpAPI, [
   CorpJs,
   CorpUser,
   CorpOAuth,

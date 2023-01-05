@@ -9,8 +9,8 @@
 - [WxAPIError](classes/WxAPIError.md)
 - [AccessToken](classes/AccessToken.md)
 - [Ticket](classes/Ticket.md)
-- [WeixinApi](classes/WeixinApi.md)
-- [CorpApi](classes/CorpApi.md)
+- [WeixinAPI](classes/WeixinAPI.md)
+- [CorpAPI](classes/CorpAPI.md)
 - [CorpCrypto](classes/CorpCrypto.md)
 
 ### Interfaces

@@ -8,5 +8,6 @@
   "disableSources": true,
   "searchInComments": true,
   "sort": ["kind","source-order"],
+  "plugin": ["typedoc-plugin-markdown"],
   "out": "doc"
 }

@@ -19,7 +19,7 @@ export type Logger = (message: any, ...args: any[]) => void
 /**
  * @internal
  */
-export abstract class ApiBase {
+export abstract class APIBase {
   readonly config: Required<APIConfig>
   private tokenStorage: TokenStorage
   private ticketStorage: TicketStorage

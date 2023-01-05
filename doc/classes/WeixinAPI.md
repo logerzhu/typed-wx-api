@@ -1,6 +1,6 @@
-[typed-wx-api](../README.md) / [Exports](../modules.md) / WeixinApi
+[typed-wx-api](../README.md) / [Exports](../modules.md) / WeixinAPI
 
-# Class: WeixinApi
+# Class: WeixinAPI
 
 ## Hierarchy
 
@@ -22,136 +22,136 @@
 
 - `WeixinFreePublish`
 
-- `WeixinOpenApi`
+- `WeixinOpenAPI`
 
 - `WeixinMenu`
 
 - `WeixinMessage`
 
-  ↳ **`WeixinApi`**
+  ↳ **`WeixinAPI`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](WeixinApi.md#constructor)
+- [constructor](WeixinAPI.md#constructor)
 
 ### Properties
 
-- [config](WeixinApi.md#config)
-- [logger](WeixinApi.md#logger)
-- [appid](WeixinApi.md#appid)
-- [secret](WeixinApi.md#secret)
+- [config](WeixinAPI.md#config)
+- [logger](WeixinAPI.md#logger)
+- [appid](WeixinAPI.md#appid)
+- [secret](WeixinAPI.md#secret)
 
 ### Methods
 
-- [request](WeixinApi.md#request)
-- [getAccessToken](WeixinApi.md#getaccesstoken)
-- [ensureAccessToken](WeixinApi.md#ensureaccesstoken)
-- [getTicket](WeixinApi.md#getticket)
-- [ensureTicket](WeixinApi.md#ensureticket)
-- [pkcs7Decoder](WeixinApi.md#pkcs7decoder)
-- [pkcs7Encoder](WeixinApi.md#pkcs7encoder)
-- [initCrypto](WeixinApi.md#initcrypto)
-- [rawSignature](WeixinApi.md#rawsignature)
-- [encrypt](WeixinApi.md#encrypt)
-- [decrypt](WeixinApi.md#decrypt)
-- [resolveAccessToken](WeixinApi.md#resolveaccesstoken)
-- [resolveTicket](WeixinApi.md#resolveticket)
-- [getIdList](WeixinApi.md#getidlist)
+- [request](WeixinAPI.md#request)
+- [getAccessToken](WeixinAPI.md#getaccesstoken)
+- [ensureAccessToken](WeixinAPI.md#ensureaccesstoken)
+- [getTicket](WeixinAPI.md#getticket)
+- [ensureTicket](WeixinAPI.md#ensureticket)
+- [pkcs7Decoder](WeixinAPI.md#pkcs7decoder)
+- [pkcs7Encoder](WeixinAPI.md#pkcs7encoder)
+- [initCrypto](WeixinAPI.md#initcrypto)
+- [rawSignature](WeixinAPI.md#rawsignature)
+- [encrypt](WeixinAPI.md#encrypt)
+- [decrypt](WeixinAPI.md#decrypt)
+- [resolveAccessToken](WeixinAPI.md#resolveaccesstoken)
+- [resolveTicket](WeixinAPI.md#resolveticket)
+- [getIdList](WeixinAPI.md#getidlist)
 
 ### 草稿
 
-- [addDraft](WeixinApi.md#adddraft)
-- [getDraft](WeixinApi.md#getdraft)
-- [deleteDraft](WeixinApi.md#deletedraft)
-- [updateDraft](WeixinApi.md#updatedraft)
-- [getDraftCount](WeixinApi.md#getdraftcount)
-- [getDrafts](WeixinApi.md#getdrafts)
+- [addDraft](WeixinAPI.md#adddraft)
+- [getDraft](WeixinAPI.md#getdraft)
+- [deleteDraft](WeixinAPI.md#deletedraft)
+- [updateDraft](WeixinAPI.md#updatedraft)
+- [getDraftCount](WeixinAPI.md#getdraftcount)
+- [getDrafts](WeixinAPI.md#getdrafts)
 
 ### 图文消息
 
-- [submitFreePublish](WeixinApi.md#submitfreepublish)
-- [getFreePublish](WeixinApi.md#getfreepublish)
-- [deleteFreePublish](WeixinApi.md#deletefreepublish)
-- [getArticle](WeixinApi.md#getarticle)
-- [getFreePublishes](WeixinApi.md#getfreepublishes)
+- [submitFreePublish](WeixinAPI.md#submitfreepublish)
+- [getFreePublish](WeixinAPI.md#getfreepublish)
+- [deleteFreePublish](WeixinAPI.md#deletefreepublish)
+- [getArticle](WeixinAPI.md#getarticle)
+- [getFreePublishes](WeixinAPI.md#getfreepublishes)
 
 ### 微信服务器
 
-- [getIP](WeixinApi.md#getip)
+- [getIP](WeixinAPI.md#getip)
 
 ### JS_SDK
 
-- [getJsConfig](WeixinApi.md#getjsconfig)
-- [getCardExtConfig](WeixinApi.md#getcardextconfig)
+- [getJsConfig](WeixinAPI.md#getjsconfig)
+- [getCardExtConfig](WeixinAPI.md#getcardextconfig)
 
 ### 永久素材
 
-- [uploadMaterial](WeixinApi.md#uploadmaterial)
-- [uploadVideoMaterial](WeixinApi.md#uploadvideomaterial)
-- [getVideoMaterial](WeixinApi.md#getvideomaterial)
-- [getMaterial](WeixinApi.md#getmaterial)
-- [getNewsMaterial](WeixinApi.md#getnewsmaterial)
-- [deleteMaterial](WeixinApi.md#deletematerial)
-- [getMaterialCount](WeixinApi.md#getmaterialcount)
-- [getMaterials](WeixinApi.md#getmaterials)
-- [getNewsMaterials](WeixinApi.md#getnewsmaterials)
+- [uploadMaterial](WeixinAPI.md#uploadmaterial)
+- [uploadVideoMaterial](WeixinAPI.md#uploadvideomaterial)
+- [getVideoMaterial](WeixinAPI.md#getvideomaterial)
+- [getMaterial](WeixinAPI.md#getmaterial)
+- [getNewsMaterial](WeixinAPI.md#getnewsmaterial)
+- [deleteMaterial](WeixinAPI.md#deletematerial)
+- [getMaterialCount](WeixinAPI.md#getmaterialcount)
+- [getMaterials](WeixinAPI.md#getmaterials)
+- [getNewsMaterials](WeixinAPI.md#getnewsmaterials)
 
 ### 临时素材
 
-- [uploadMedia](WeixinApi.md#uploadmedia)
-- [getMedia](WeixinApi.md#getmedia)
-- [getVideoMedia](WeixinApi.md#getvideomedia)
-- [getMediaHD](WeixinApi.md#getmediahd)
-- [uploadImage](WeixinApi.md#uploadimage)
+- [uploadMedia](WeixinAPI.md#uploadmedia)
+- [getMedia](WeixinAPI.md#getmedia)
+- [getVideoMedia](WeixinAPI.md#getvideomedia)
+- [getMediaHD](WeixinAPI.md#getmediahd)
+- [uploadImage](WeixinAPI.md#uploadimage)
 
 ### 菜单
 
-- [createMenu](WeixinApi.md#createmenu)
-- [getMenu](WeixinApi.md#getmenu)
-- [removeMenu](WeixinApi.md#removemenu)
-- [getCurrentSelfMenuInfo](WeixinApi.md#getcurrentselfmenuinfo)
-- [addConditionalMenu](WeixinApi.md#addconditionalmenu)
-- [delConditionalMenu](WeixinApi.md#delconditionalmenu)
-- [tryMatchConditionalMenu](WeixinApi.md#trymatchconditionalmenu)
+- [createMenu](WeixinAPI.md#createmenu)
+- [getMenu](WeixinAPI.md#getmenu)
+- [removeMenu](WeixinAPI.md#removemenu)
+- [getCurrentSelfMenuInfo](WeixinAPI.md#getcurrentselfmenuinfo)
+- [addConditionalMenu](WeixinAPI.md#addconditionalmenu)
+- [delConditionalMenu](WeixinAPI.md#delconditionalmenu)
+- [tryMatchConditionalMenu](WeixinAPI.md#trymatchconditionalmenu)
 
 ### 消息
 
-- [sendMessage](WeixinApi.md#sendmessage)
-- [getAutoReplyInfo](WeixinApi.md#getautoreplyinfo)
+- [sendMessage](WeixinAPI.md#sendmessage)
+- [getAutoReplyInfo](WeixinAPI.md#getautoreplyinfo)
 
 ### API额度
 
-- [getQuota](WeixinApi.md#getquota)
-- [clearQuota](WeixinApi.md#clearquota)
-- [getRid](WeixinApi.md#getrid)
+- [getQuota](WeixinAPI.md#getquota)
+- [clearQuota](WeixinAPI.md#clearquota)
+- [getRid](WeixinAPI.md#getrid)
 
 ### 二维码
 
-- [createTmpQRCode](WeixinApi.md#createtmpqrcode)
-- [createLimitQRCode](WeixinApi.md#createlimitqrcode)
-- [showQRCodeURL](WeixinApi.md#showqrcodeurl)
+- [createTmpQRCode](WeixinAPI.md#createtmpqrcode)
+- [createLimitQRCode](WeixinAPI.md#createlimitqrcode)
+- [showQRCodeURL](WeixinAPI.md#showqrcodeurl)
 
 ### 用户
 
-- [getUser](WeixinApi.md#getuser)
-- [batchGetUsers](WeixinApi.md#batchgetusers)
-- [getFollowers](WeixinApi.md#getfollowers)
-- [updateRemark](WeixinApi.md#updateremark)
-- [createTag](WeixinApi.md#createtag)
-- [getTags](WeixinApi.md#gettags)
-- [updateTag](WeixinApi.md#updatetag)
-- [deleteTag](WeixinApi.md#deletetag)
-- [getUsersFromTag](WeixinApi.md#getusersfromtag)
-- [batchTagging](WeixinApi.md#batchtagging)
-- [batchUnTagging](WeixinApi.md#batchuntagging)
+- [getUser](WeixinAPI.md#getuser)
+- [batchGetUsers](WeixinAPI.md#batchgetusers)
+- [getFollowers](WeixinAPI.md#getfollowers)
+- [updateRemark](WeixinAPI.md#updateremark)
+- [createTag](WeixinAPI.md#createtag)
+- [getTags](WeixinAPI.md#gettags)
+- [updateTag](WeixinAPI.md#updatetag)
+- [deleteTag](WeixinAPI.md#deletetag)
+- [getUsersFromTag](WeixinAPI.md#getusersfromtag)
+- [batchTagging](WeixinAPI.md#batchtagging)
+- [batchUnTagging](WeixinAPI.md#batchuntagging)
 
 ## Constructors
 
 ### constructor
 
-• **new WeixinApi**(`config`, `tokenStorage?`)
+• **new WeixinAPI**(`config`, `tokenStorage?`)
 
 #### Parameters
 
@@ -1350,7 +1350,7 @@ cgi_path: api的请求地址，例如"/cgi-bin/message/custom/send";不要前缀
 
 #### Inherited from
 
-WeixinOpenApi.getQuota
+WeixinOpenAPI.getQuota
 
 ___
 
@@ -1366,7 +1366,7 @@ ___
 
 #### Inherited from
 
-WeixinOpenApi.clearQuota
+WeixinOpenAPI.clearQuota
 
 ___
 
@@ -1388,7 +1388,7 @@ ___
 
 #### Inherited from
 
-WeixinOpenApi.getRid
+WeixinOpenAPI.getRid
 
 ## 二维码
 

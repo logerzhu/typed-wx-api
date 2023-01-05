@@ -1,14 +1,14 @@
 import { TicketStorage, TokenStorage } from '../storage'
-import { ApiCrypto } from './api_crypto'
+import { APICrypto } from './api_crypto'
 import { applyMixins } from '../utils'
-import { ApiBase, APIConfig } from './api_base'
+import { APIBase, APIConfig } from './api_base'
 
-export interface Api extends ApiCrypto {}
+export interface API extends APICrypto {}
 
 /**
  * @internal
  */
-export abstract class Api extends ApiBase {
+export abstract class API extends APIBase {
   protected constructor(
     config: APIConfig,
     tokenStorage?: TokenStorage,
@@ -18,4 +18,4 @@ export abstract class Api extends ApiBase {
   }
 }
 
-applyMixins(Api, [ApiCrypto])
+applyMixins(API, [APICrypto])

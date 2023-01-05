@@ -1,11 +1,11 @@
 import crypto from 'crypto'
-import { ApiBase } from './api_base'
+import { APIBase } from './api_base'
 import { WxAPIError } from '../errors'
 
 /**
  * @internal
  */
-export abstract class ApiCrypto extends ApiBase {
+export abstract class APICrypto extends APIBase {
   private cryptoConfig: {
     corpId: string
     token: string
