@@ -1,11 +1,13 @@
 import { CorpBase } from './corp_base'
 
 /**
- * 回话存档相关接口
+ * 会话存档相关接口
+ * @internal
  */
 export abstract class CorpMsgAudit extends CorpBase {
   /**
    * 获取会话内容存档内部群信息
+   * @group 会话存档
    */
   async getRoom(roomid: string) {
     const result = await this.request({

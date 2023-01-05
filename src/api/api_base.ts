@@ -16,6 +16,9 @@ export type APIConfig = {
 
 export type Logger = (message: any, ...args: any[]) => void
 
+/**
+ * @internal
+ */
 export abstract class ApiBase {
   readonly config: Required<APIConfig>
   private tokenStorage: TokenStorage

@@ -1,11 +1,16 @@
 import { WeixinBase } from './weixin_base'
 import { WxDraftNews } from './weixin_draft'
 
+/**
+ * 发布草稿
+ * @internal
+ */
 export abstract class WeixinFreePublish extends WeixinBase {
   /**
    * 发布草稿
    *
    * 发布任务提交成功，并不意味着此时发布已经完成，仍有可能在后续的发布过程中出现异常情况导致发布失败，如原创声明失败、平台审核不通过等。
+   * @group 图文消息
    */
   async submitFreePublish(media_id: string) {
     const result = await this.request({
@@ -22,6 +27,7 @@ export abstract class WeixinFreePublish extends WeixinBase {
    * publish_status: 发布状态，0:成功, 1:发布中，2:原创失败, 3: 常规失败, 4:平台审核不通过, 5:成功后用户删除所有文章, 6: 成功后系统封禁所有文章
    *
    * fail_idx: 当发布状态为2或4时，返回不通过的文章编号，第一篇为 1
+   * @group 图文消息
    */
   async getFreePublish(publish_id: string) {
     const result = await this.request({
@@ -53,6 +59,7 @@ export abstract class WeixinFreePublish extends WeixinBase {
   /**
    * 删除发布
    * @param data
+   * @group 图文消息
    */
   async deleteFreePublish(data: {
     article_id: string
@@ -72,6 +79,7 @@ export abstract class WeixinFreePublish extends WeixinBase {
   /**
    * 通过 article_id 获取已发布文章
    * @param article_id
+   * @group 图文消息
    */
   async getArticle(article_id: string) {
     const result = await this.request({
@@ -89,7 +97,8 @@ export abstract class WeixinFreePublish extends WeixinBase {
   }
 
   /**
-   * 获取草稿列表
+   * 获取图文列表
+   * @group 图文消息
    */
   async getFreePublishes(data: {
     /**

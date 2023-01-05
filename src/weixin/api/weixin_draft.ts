@@ -25,11 +25,13 @@ export type WxDraftNews = {
 
 /**
  * 草稿箱
+ * @internal
  */
 export abstract class WeixinDraft extends WeixinBase {
   /**
    * 新建草稿
    * @param {Object} draft 草稿
+   * @group 草稿
    */
   async addDraft(draft: WxDraftNews[]) {
     const result = await this.request({
@@ -43,6 +45,7 @@ export abstract class WeixinDraft extends WeixinBase {
   /**
    * 获取草稿
    * @param media_id
+   * @group 草稿
    */
   async getDraft(media_id: string) {
     const result = await this.request({
@@ -60,6 +63,8 @@ export abstract class WeixinDraft extends WeixinBase {
 
   /**
    * 删除草稿
+   * @param media_id
+   * @group 草稿
    */
   async deleteDraft(media_id: string) {
     await this.request({
@@ -73,6 +78,7 @@ export abstract class WeixinDraft extends WeixinBase {
   /**
    * 更新草稿
    * @param draft 草稿
+   * @group 草稿
    */
   async updateDraft(draft: {
     media_id: string
@@ -92,6 +98,7 @@ export abstract class WeixinDraft extends WeixinBase {
 
   /**
    * 获取草稿总数
+   * @group 草稿
    */
   async getDraftCount() {
     const result = await this.request({
@@ -105,6 +112,7 @@ export abstract class WeixinDraft extends WeixinBase {
 
   /**
    * 获取草稿列表
+   * @group 草稿
    */
   async getDrafts(data: {
     /**

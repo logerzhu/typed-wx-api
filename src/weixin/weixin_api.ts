@@ -1,17 +1,19 @@
-import { TokenStorage } from '../../storage'
-import { applyMixins } from '../../utils'
-import { WeixinIP } from './weixin_ip'
-import { WeixinJs } from './weixin_js'
-import { WeixinUser } from './weixin_user'
-import { WeixinBase } from './weixin_base'
-import { WeixinQRCode } from './weixin_qrcode'
-import { WeixinMedia } from './weixin_media'
-import { WeixinMaterial } from './weixin_material'
-import { WeixinDraft } from './weixin_draft'
-import { WeixinFreePublish } from './weixin_freepublish'
-import { WeixinOpenApi } from './weixin_open_api'
-import { WeixinMenu } from './weixin_menu'
-import { WeixinMessage } from './weixin_message'
+import { TokenStorage } from '../storage'
+import { applyMixins } from '../utils'
+import {
+  WeixinBase,
+  WeixinDraft,
+  WeixinFreePublish,
+  WeixinIP,
+  WeixinJs,
+  WeixinMaterial,
+  WeixinMedia,
+  WeixinMenu,
+  WeixinMessage,
+  WeixinOpenApi,
+  WeixinQRCode,
+  WeixinUser
+} from './api'
 
 export interface WeixinApi
   extends WeixinBase,

@@ -30,6 +30,9 @@ export interface TicketStorage {
   save(type: string, ticket: Ticket | null): Promise<void>
 }
 
+/**
+ * @internal
+ */
 export class MemoryTicketStorage implements TicketStorage {
   private ticketStore: { [type: string]: Ticket } = {}
 

@@ -5,6 +5,9 @@ import { ApiBase, APIConfig } from './api_base'
 
 export interface Api extends ApiCrypto {}
 
+/**
+ * @internal
+ */
 export abstract class Api extends ApiBase {
   protected constructor(
     config: APIConfig,

@@ -1,10 +1,14 @@
 import { WxJsCrypto } from '../../crypto'
 import { CorpBase } from './corp_base'
 
+/**
+ * @internal
+ */
 export abstract class CorpJs extends CorpBase {
   /**
    * 获取jsapi_ticket
    * https://work.weixin.qq.com/api/doc#10029/附录1-JS-SDK使用权限签名算法
+   * @group JS_SDK
    */
   getJsApiTicket(): Promise<{ ticket: string; expires_in: number }> {
     return this.request({
@@ -12,6 +16,9 @@ export abstract class CorpJs extends CorpBase {
     })
   }
 
+  /**
+   * @group JS_SDK
+   */
   getJsApiAgentTicket(): Promise<{ ticket: string; expires_in: number }> {
     return this.request({
       url: 'ticket/get',
@@ -40,6 +47,7 @@ export abstract class CorpJs extends CorpBase {
    * ```
    *
    * @param {Object} param 参数
+   * @group JS_SDK
    */
   async getJsConfig({
     debug,
@@ -72,6 +80,13 @@ export abstract class CorpJs extends CorpBase {
     }
   }
 
+  /**
+   *
+   * @param agentid
+   * @param url
+   * @param jsApiList
+   * @group JS_SDK
+   */
   async getAgentJsConfig({
     agentid,
     url,

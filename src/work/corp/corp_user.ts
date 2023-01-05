@@ -51,9 +51,13 @@ export type ReadOnlyUserData = UserData & {
   open_userid?: string // 全局唯一。对于同一个服务商，不同应用获取到企业内同一个成员的open_userid是相同的，最多64个字节。仅第三方应用可获取
 }
 
+/**
+ * @internal
+ */
 export abstract class CorpUser extends CorpBase {
   /**
    * 创建成员
+   * @group 成员
    */
   async createUser(data: WriteOnlyUserData) {
     await this.request({
@@ -66,6 +70,7 @@ export abstract class CorpUser extends CorpBase {
 
   /**
    * 读取成员
+   * @group 成员
    */
   async getUser(userid: string) {
     const result = await this.request({
@@ -79,6 +84,7 @@ export abstract class CorpUser extends CorpBase {
 
   /**
    * 更新成员
+   * @group 成员
    */
   async updateUser(
     userid: string,
@@ -94,6 +100,7 @@ export abstract class CorpUser extends CorpBase {
 
   /**
    * 删除成员
+   * @group 成员
    */
   async deleteUser(userid: string) {
     await this.request({
@@ -107,6 +114,7 @@ export abstract class CorpUser extends CorpBase {
 
   /**
    * 批量删除成员
+   * @group 成员
    */
   async deleteUsers(user_ids: string[]) {
     await this.request({
@@ -121,6 +129,7 @@ export abstract class CorpUser extends CorpBase {
 
   /**
    * 获取部门成员
+   * @group 成员
    */
   async getDepartmentSimpleList(
     department_id: string,
@@ -145,6 +154,7 @@ export abstract class CorpUser extends CorpBase {
 
   /**
    * 获取部门成员详情
+   * @group 成员
    */
   async getDepartmentUserList(
     department_id: string,
@@ -162,6 +172,7 @@ export abstract class CorpUser extends CorpBase {
 
   /**
    * userid转openid
+   * @group 成员
    */
   async useridToOpenid(userid: string) {
     const result = await this.request({
@@ -176,6 +187,7 @@ export abstract class CorpUser extends CorpBase {
 
   /**
    * openid转userid
+   * @group 成员
    */
   async openidToUserid(openid: string) {
     const result = await this.request({
@@ -188,6 +200,10 @@ export abstract class CorpUser extends CorpBase {
     return result.userid as string
   }
 
+  /**
+   * @param userid
+   * @group 成员
+   */
   async authSuccess(userid: string) {
     await this.request({
       url: 'user/authsucc',
@@ -198,6 +214,11 @@ export abstract class CorpUser extends CorpBase {
     return {}
   }
 
+  /**
+   * 通过电话号码查询成员
+   * @param phoneNumber
+   * @group 成员
+   */
   async getUserid(phoneNumber: string) {
     const result = await this.request({
       method: 'post',

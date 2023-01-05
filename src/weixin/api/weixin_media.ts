@@ -1,6 +1,9 @@
 import { WeixinBase } from './weixin_base'
 import FormData from 'form-data'
 
+/**
+ * @internal
+ */
 export abstract class WeixinMedia extends WeixinBase {
   /**
    * 新增临时素材，分别有图片（image）、语音（voice）、视频（video）和缩略图（thumb）
@@ -12,6 +15,7 @@ export abstract class WeixinMedia extends WeixinBase {
    * 语音（voice）：2M，播放长度不超过60s，支持AMR\MP3格式
    * 视频（video）：10MB，支持MP4格式
    * 缩略图（thumb）：64KB，支持JPG格式
+   * @group 临时素材
    */
   async uploadMedia(
     buffer: Buffer,
@@ -38,6 +42,7 @@ export abstract class WeixinMedia extends WeixinBase {
    * 获取临时素材
    * 如果要获取视频素材, 请使用 getVideoMedia
    * @param media_id
+   * @group 临时素材
    */
   async getMedia(media_id: string) {
     const result = await this.request({
@@ -51,6 +56,7 @@ export abstract class WeixinMedia extends WeixinBase {
   /**
    * 获取临时视频素材
    * @param media_id
+   * @group 临时素材
    */
   async getVideoMedia(media_id: string) {
     const result = await this.request({
@@ -65,6 +71,7 @@ export abstract class WeixinMedia extends WeixinBase {
 
   /**
    * 获取高清语音素材
+   * @group 临时素材
    */
   async getMediaHD(media_id: string) {
     const result = await this.request({
@@ -77,6 +84,7 @@ export abstract class WeixinMedia extends WeixinBase {
 
   /**
    * 上传图文消息内的图片获取URL
+   * @group 临时素材
    */
   async uploadImage(buffer: Buffer, filename: string) {
     const form = new FormData()

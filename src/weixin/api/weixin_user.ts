@@ -25,9 +25,13 @@ export type WxUser =
       qr_scene_str?: string
     }
 
+/**
+ * @internal
+ */
 export abstract class WeixinUser extends WeixinBase {
   /**
    * 获取用户基本信息。可以设置lang，其中zh_CN 简体，zh_TW 繁体，en 英语。默认为en
+   * @group 用户
    */
   async getUser(openid: string, lang: 'zh_CN' | 'zh_TW' | 'en' = 'zh_CN') {
     const result = await this.request({
@@ -42,6 +46,7 @@ export abstract class WeixinUser extends WeixinBase {
 
   /**
    * 批量获取用户基本信息
+   * @group 用户
    */
   async batchGetUsers(
     openidList: string[],
@@ -61,6 +66,7 @@ export abstract class WeixinUser extends WeixinBase {
 
   /**
    * 获取关注者列表
+   * @group 用户
    */
   async getFollowers() {
     const openidList: string[] = []
@@ -87,6 +93,7 @@ export abstract class WeixinUser extends WeixinBase {
    * 设置用户备注名
    * @param {String} openid 用户的openid
    * @param {String} remark 新的备注名，长度必须小于30字符
+   * @group 用户
    */
   async updateRemark(openid: string, remark: string) {
     await this.request({
@@ -103,6 +110,7 @@ export abstract class WeixinUser extends WeixinBase {
   /**
    * 创建标签
    * @param {String} name 标签名
+   * @group 用户
    */
   async createTag(name: string) {
     const result = await this.request({
@@ -119,8 +127,8 @@ export abstract class WeixinUser extends WeixinBase {
 
   /**
    * 获取公众号已创建的标签
+   * @group 用户
    */
-
   async getTags() {
     const result = await this.request({
       url: 'tags/get'
@@ -134,8 +142,8 @@ export abstract class WeixinUser extends WeixinBase {
 
   /**
    * 编辑标签
+   * @group 用户
    */
-
   async updateTag(tagid: number, name: string) {
     await this.request({
       url: 'tags/update',
@@ -152,6 +160,7 @@ export abstract class WeixinUser extends WeixinBase {
 
   /**
    * 删除标签
+   * @group 用户
    */
   async deleteTag(tagid: number) {
     await this.request({
@@ -169,8 +178,8 @@ export abstract class WeixinUser extends WeixinBase {
   /**
    * 获取标签下粉丝列表
    * @param {String} tagId 标签id
+   * @group 用户
    */
-
   async getUsersFromTag(tagId: number) {
     const openidList: string[] = []
     let next_openid = ''
@@ -199,8 +208,8 @@ export abstract class WeixinUser extends WeixinBase {
    * 批量为用户打标签
    * 1. 每次传入的openid列表个数不能超过50个
    * 2. 有粉丝身上的标签数最多20个
+   * @group 用户
    */
-
   async batchTagging(opendidList: string[], tagid: number) {
     await this.request({
       method: 'post',
@@ -215,6 +224,7 @@ export abstract class WeixinUser extends WeixinBase {
 
   /**
    * 批量为用户取消标签
+   * @group 用户
    */
   async batchUnTagging(opendidList: string[], tagid: number) {
     await this.request({
@@ -230,8 +240,8 @@ export abstract class WeixinUser extends WeixinBase {
 
   /**
    * 获取用户身上的标签列表
+   *
    */
-
   async getIdList(openid: string) {
     const result = await this.request({
       method: 'post',

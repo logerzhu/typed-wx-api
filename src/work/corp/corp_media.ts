@@ -1,9 +1,13 @@
 import FormData from 'form-data'
 import { CorpBase } from './corp_base'
 
+/**
+ * @internal
+ */
 export abstract class CorpMedia extends CorpBase {
   /**
    * 上传临时素材
+   * @group 素材
    */
   async uploadMedia(
     buffer: Buffer,
@@ -28,6 +32,7 @@ export abstract class CorpMedia extends CorpBase {
 
   /**
    * 上传图片
+   * @group 素材
    */
   async uploadImage(buffer: Buffer, filename: string) {
     const form = new FormData()
@@ -45,6 +50,7 @@ export abstract class CorpMedia extends CorpBase {
 
   /**
    * 获取高清语音素材
+   * @group 素材
    */
   async getMediaHD(mediaId: string) {
     const result = await this.request({
@@ -57,6 +63,7 @@ export abstract class CorpMedia extends CorpBase {
 
   /**
    * 获取临时素材
+   * @group 素材
    */
   async getMedia(mediaId: string) {
     const result = await this.request({

@@ -1,8 +1,12 @@
 import { CorpBase } from './corp_base'
 
+/**
+ * @internal
+ */
 export abstract class CorpTag extends CorpBase {
   /**
    * 获取企业标签库
+   * @group 标签
    */
   async getCorpTagList(
     args?:
@@ -46,6 +50,7 @@ export abstract class CorpTag extends CorpBase {
    * 如果填写了group_id参数，则group_name和标签组的order参数会被忽略。
    * 不支持创建空标签组。
    * 标签组内的标签不可同名，如果传入多个同名标签，则只会创建一个。
+   * @group 标签
    */
   async addCorpTag(
     args?: (
@@ -93,7 +98,7 @@ export abstract class CorpTag extends CorpBase {
 
   /**
    * 编辑企业客户标签
-   *
+   * @group 标签
    */
   async editCorpTag(args?: {
     //标签或标签组的id
@@ -116,6 +121,7 @@ export abstract class CorpTag extends CorpBase {
    *
    * tag_id和group_id不可同时为空。
    * 如果一个标签组下所有的标签均被删除，则标签组会被自动删除。
+   * @group 标签
    */
   async delCorpTag(
     args:
@@ -132,7 +138,7 @@ export abstract class CorpTag extends CorpBase {
 
   /**
    * 编辑客户企业标签
-   *
+   * @group 标签
    */
   async markTag(
     args: {

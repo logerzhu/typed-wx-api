@@ -1,6 +1,9 @@
 import { WeixinBase } from './weixin_base'
 import FormData from 'form-data'
 
+/**
+ * @internal
+ */
 export abstract class WeixinMaterial extends WeixinBase {
   /**
    * 新增永久素材，分别有图片（image）、语音（voice）和缩略图（thumb）
@@ -8,6 +11,7 @@ export abstract class WeixinMaterial extends WeixinBase {
    * 图片（image）: 10M，支持PNG\JPEG\JPG\GIF格式
    * 语音（voice）：2M，播放长度不超过60s，支持AMR\MP3格式
    * 缩略图（thumb）：64KB，支持JPG格式
+   * @group 永久素材
    */
   async uploadMaterial(
     buffer: Buffer,
@@ -35,6 +39,7 @@ export abstract class WeixinMaterial extends WeixinBase {
   /**
    * 新增永久视频素材
    * 视频（video）：10MB，支持MP4格式
+   * @group 永久素材
    */
   async uploadVideoMaterial(
     buffer: Buffer,
@@ -67,6 +72,7 @@ export abstract class WeixinMaterial extends WeixinBase {
   /**
    * 获取视频(video)永久素材
    * @param media_id
+   * @group 永久素材
    */
   async getVideoMaterial(media_id: string) {
     const result = await this.request({
@@ -84,6 +90,7 @@ export abstract class WeixinMaterial extends WeixinBase {
   /**
    * 获取图片（image）、语音（voice）和缩略图（thumb）永久素材
    * @param media_id
+   * @group 永久素材
    */
   async getMaterial(media_id: string) {
     const result = await this.request({
@@ -98,6 +105,7 @@ export abstract class WeixinMaterial extends WeixinBase {
   /**
    * 获取图文消息(news)永久素材
    * @param media_id
+   * @group 永久素材
    */
   async getNewsMaterial(media_id: string) {
     const result = await this.request({
@@ -121,6 +129,7 @@ export abstract class WeixinMaterial extends WeixinBase {
 
   /**
    * 删除永久素材
+   * @group 永久素材
    */
   async deleteMaterial(media_id: string) {
     await this.request({
@@ -135,6 +144,7 @@ export abstract class WeixinMaterial extends WeixinBase {
    * 获取素材总数
    * 1. 永久素材的总数，也会计算公众平台官网素材管理中的素材
    * 2.图片和图文消息素材（包括单图文和多图文）的总数上限为100000，其他素材的总数上限为1000
+   * @group 永久素材
    */
   async getMaterialCount() {
     const result = await this.request({
@@ -154,6 +164,7 @@ export abstract class WeixinMaterial extends WeixinBase {
    * @param type 素材的类型，图片（image）、视频（video）、语音 （voice）
    * @param offset 从全部素材的该偏移位置开始返回，0表示从第一个素材 返回
    * @param count 返回素材的数量，取值在1到20之间
+   * @group 永久素材
    */
   async getMaterials(
     type: 'image' | 'video' | 'voice',
@@ -185,6 +196,7 @@ export abstract class WeixinMaterial extends WeixinBase {
    * 获取图文永久素材列表
    * @param offset 从全部素材的该偏移位置开始返回，0表示从第一个素材 返回
    * @param count 返回素材的数量，取值在1到20之间
+   * @group 永久素材
    */
   async getNewsMaterials(offset: number = 0, count: number = 20) {
     const result = await this.request({

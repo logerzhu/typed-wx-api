@@ -66,8 +66,14 @@ export type GroupMsg = {
   attachments?: MsgAttachment[]
 }
 
+/**
+ * @internal
+ */
 export abstract class CorpMsgTemplate extends CorpBase {
-  //创建企业群发
+  /**
+   * 创建企业群发
+   * @group 群发消息
+   */
   async addMsgTemplate(
     data: {
       text?: { content: string } //消息文本内容，最多4000个字节
@@ -95,7 +101,10 @@ export abstract class CorpMsgTemplate extends CorpBase {
     }
   }
 
-  //群发任务记录的起止时间间隔不能超过1个月
+  /**
+   * 群发任务记录的起止时间间隔不能超过1个月
+   * @group 群发消息
+   */
   async getGroupMsgList(data: {
     chat_type: 'single' | 'group' //群发任务的类型，默认为single，表示发送给客户，group表示发送给客户群
     start_time: number //群发任务记录开始时间, 单位:秒
@@ -120,6 +129,11 @@ export abstract class CorpMsgTemplate extends CorpBase {
     return groupMsgList
   }
 
+  /**
+   * 获取群蜂消息任务
+   * @param msgid
+   * @group 群发消息
+   */
   async getGroupMsgTask(msgid: string) {
     const sendList: MsgSendTask[] = []
     let cursor = undefined
@@ -138,6 +152,11 @@ export abstract class CorpMsgTemplate extends CorpBase {
     return sendList
   }
 
+  /**
+   * 群发消息结果
+   * @param msgid
+   * @group 群发消息
+   */
   async getGroupMsgResult(msgid: string) {
     const detailList: MsgSendResult[] = []
     let cursor = undefined
@@ -156,6 +175,12 @@ export abstract class CorpMsgTemplate extends CorpBase {
     return detailList
   }
 
+  /**
+   *
+   * @param msgid
+   * @param userid
+   * @group 群发消息
+   */
   async getGroupMsgSendResult(msgid: string, userid: string) {
     const sendList: MsgSendResult[] = []
     let cursor = undefined

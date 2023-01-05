@@ -86,10 +86,14 @@ export type WxMpButtonItem = { name: string } & (
     }
 )
 
+/**
+ * @internal
+ */
 export abstract class WeixinMenu extends WeixinBase {
   /**
    * 创建自定义菜单
    * @param menu
+   * @group 菜单
    */
   async createMenu(menu: WxMenu) {
     const result = await this.request({
@@ -102,6 +106,7 @@ export abstract class WeixinMenu extends WeixinBase {
 
   /**
    * 获取自定义菜单配置
+   * @group 菜单
    */
   async getMenu() {
     const result = await this.request({
@@ -130,6 +135,7 @@ export abstract class WeixinMenu extends WeixinBase {
 
   /**
    * 删除自定义菜单
+   * @group 菜单
    */
   async removeMenu() {
     const result = await this.request({
@@ -145,7 +151,7 @@ export abstract class WeixinMenu extends WeixinBase {
    * 本接口将会提供公众号当前使用的自定义菜单的配置，如果公众号是通过API调用设置的菜单，则返回菜单的开发配置，
    * 而如果公众号是在公众平台官网通过网站功能发布菜单，则本接口返回运营者设置的菜单配置。
    *
-   * ```
+   * @group 菜单
    */
   async getCurrentSelfMenuInfo() {
     const result = await this.request({
@@ -166,6 +172,7 @@ export abstract class WeixinMenu extends WeixinBase {
 
   /**
    * 创建个性化自定义菜单
+   * @group 菜单
    */
   async addConditionalMenu(menu: {
     button: Button[]
@@ -189,6 +196,7 @@ export abstract class WeixinMenu extends WeixinBase {
 
   /**
    * 删除个性化自定义菜单
+   * @group 菜单
    */
   async delConditionalMenu(menuid: string) {
     const result = await this.request({
@@ -202,6 +210,7 @@ export abstract class WeixinMenu extends WeixinBase {
   /**
    * 测试个性化菜单匹配结果
    * @param user_id 可以是粉丝的OpenID，也可以是粉丝的微信号。
+   * @group 菜单
    */
   async tryMatchConditionalMenu(user_id: string) {
     const result = await this.request({

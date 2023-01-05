@@ -1,5 +1,8 @@
 import Crypto from 'crypto'
 
+/**
+ * @internal
+ */
 export class WxJsCrypto {
   static createNonceStr() {
     return Math.random().toString(36).substr(2, 15)

@@ -1,1 +1,2 @@
-export * from './api/weixin_api'
+export * from './api'
+export * from './weixin_api'

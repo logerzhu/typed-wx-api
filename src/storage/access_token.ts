@@ -30,6 +30,9 @@ export interface TokenStorage {
   save(token: AccessToken | null): Promise<void>
 }
 
+/**
+ * @internal
+ */
 export class MemoryTokenStorage implements TokenStorage {
   private token: AccessToken | null = null
 

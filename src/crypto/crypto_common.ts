@@ -1,6 +1,9 @@
 import crypto from 'crypto'
 import { PKCS7Encoder } from './pkcs7_encode'
 
+/**
+ * @internal
+ */
 export class WxCrypto {
   private readonly token: string
   private readonly key: Buffer

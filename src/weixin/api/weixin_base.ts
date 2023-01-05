@@ -1,6 +1,9 @@
 import { Api } from '../../api/api'
 import { TicketStorage, TokenStorage } from '../../storage'
 
+/**
+ * @internal
+ */
 export abstract class WeixinBase extends Api {
   readonly appid: string
   readonly secret: string

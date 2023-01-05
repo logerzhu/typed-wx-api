@@ -30,7 +30,17 @@ export type WxReplyMessage =
       }
     }
 
+/**
+ * @internal
+ */
 export abstract class WeixinMessage extends WeixinBase {
+  /**
+   * 发送客服消息
+   * @param toOpenid
+   * @param message
+   * @param kf_account
+   * @group 消息
+   */
   async sendMessage(
     toOpenid: string,
     message:
@@ -109,6 +119,7 @@ export abstract class WeixinMessage extends WeixinBase {
 
   /**
    * 获取自动回复规则
+   * @group 消息
    */
   async getAutoReplyInfo() {
     const result = await this.request({

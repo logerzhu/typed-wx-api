@@ -1,6 +1,9 @@
 import { Api } from '../../api/api'
 import { TicketStorage, TokenStorage } from '../../storage'
 
+/**
+ * @internal
+ */
 export abstract class CorpBase extends Api {
   readonly corpid: string
   readonly corpSecret: string

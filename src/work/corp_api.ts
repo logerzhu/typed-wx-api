@@ -1,17 +1,19 @@
-import { TicketStorage, TokenStorage } from '../../storage'
-import { applyMixins } from '../../utils'
-import { CorpJs } from './corp_js'
-import { CorpUser } from './corp_user'
-import { CorpOAuth } from './corp_oauth'
-import { CorpMsgTemplate } from './corp_msg_template'
-import { CorpContact } from './corp_contact'
-import { CorpGroupChat } from './corp_groupchat'
-import { CorpMsgAudit } from './corp_msg_audit'
-import { CorpBase } from './corp_base'
-import { CorpMedia } from './corp_media'
-import { WxAPIError } from '../../errors'
-import { CorpTag } from './corp_tag'
-import { CorpMessage } from './corp_message'
+import { TicketStorage, TokenStorage } from '../storage'
+import { applyMixins } from '../utils'
+import { WxAPIError } from '../errors'
+import {
+  CorpBase,
+  CorpContact,
+  CorpGroupChat,
+  CorpJs,
+  CorpMedia,
+  CorpMessage,
+  CorpMsgAudit,
+  CorpMsgTemplate,
+  CorpOAuth,
+  CorpTag,
+  CorpUser
+} from './corp'
 
 export interface CorpApi
   extends CorpJs,

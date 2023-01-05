@@ -389,9 +389,13 @@ export type AgentMessage =
   | MiniprogramNoticeMessage
   | TemplateCardMessage
 
+/**
+ * @internal
+ */
 export abstract class CorpMessage extends CorpBase {
   /**
    * 应用支持推送文本、图片、视频、文件、图文等类型。
+   * @group 消息
    */
   async sendMessage(
     data: {
@@ -437,6 +441,7 @@ export abstract class CorpMessage extends CorpBase {
    *
    * 本接口可以撤回24小时内通过发送应用消息接口推送的消息，仅可撤回企业微信端的数据，微信插件端的数据不支持撤回。
    * @param msgid
+   * @group 消息
    */
   async recallMessage(msgid: string) {
     const result = await this.request({

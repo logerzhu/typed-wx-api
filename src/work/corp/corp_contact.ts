@@ -50,9 +50,13 @@ export type ExternalContactUser = {
   external_profile?: any //外部联系人的自定义展示信息，可以有多个字段和多种类型，包括文本，网页和小程序，仅当联系人类型是企业微信用户时有此字段，字段详情见对外属性；
 }
 
+/**
+ * @internal
+ */
 export abstract class CorpContact extends CorpBase {
   /**
    * 获取配置了客户联系功能的成员列表
+   * @group 客户
    * */
   async getFollowUserList() {
     const result = await this.request({
@@ -64,6 +68,7 @@ export abstract class CorpContact extends CorpBase {
 
   /**
    * 获取客户列表
+   * @group 客户
    */
   async getExternalContactList(userid: string) {
     const result = await this.request({
@@ -77,6 +82,7 @@ export abstract class CorpContact extends CorpBase {
 
   /**
    * 获取客户详情
+   * @group 客户
    */
   async getExternalContact(externalUserid: string) {
     const result = await this.request({
@@ -109,6 +115,7 @@ export abstract class CorpContact extends CorpBase {
 
   /**
    * 批量获取客户详情
+   * @group 客户
    */
   async batchGetExternalContact(userids: string[]) {
     const data: {
@@ -133,6 +140,7 @@ export abstract class CorpContact extends CorpBase {
 
   /**
    * 修改客户备注信息
+   * @group 客户
    */
   async remarkExternalContact(data: {
     userid: string //企业成员的userid

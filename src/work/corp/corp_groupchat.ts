@@ -1,8 +1,12 @@
 import { CorpBase } from './corp_base'
 
+/**
+ * @internal
+ */
 export abstract class CorpGroupChat extends CorpBase {
   /**
    * 获取客户群列表
+   * @group 客户群
    */
   async listGroupChat(args?: {
     /*客户群跟进状态过滤。
@@ -45,6 +49,7 @@ export abstract class CorpGroupChat extends CorpBase {
 
   /**
    * 获取客户群详情
+   * @group 客户群
    */
   async getGroupChat(args: {
     chat_id: string //客户群ID
@@ -92,6 +97,7 @@ export abstract class CorpGroupChat extends CorpBase {
 
   /**
    * 客户群opengid转换
+   * @group 客户群
    */
   async opengidToChatid(opengid: string) {
     const result = await this.request({

@@ -1,4 +1,3 @@
-export * from './corp/corp_api'
-export * from '../api/api'
-export * from '../storage'
+export * from './corp_api'
 export * from './crypto/crypto_corp'
+export * from './corp'
