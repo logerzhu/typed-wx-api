@@ -6,7 +6,12 @@ export type AuthorizationInfo = {
   expires_in?: number //authorizer_access_token 的有效期（在授权的公众号/小程序具备 API 权限时，才有此返回值），单位：秒
   authorizer_refresh_token: string //刷新令牌（在授权的公众号具备 API 权限时，才有此返回值），刷新令牌主要用于第三方平台获取和刷新已授权用户的 authorizer_access_token。一旦丢失，只能让用户重新授权，才能再次拿到新的刷新令牌。用户重新授权后，之前的刷新令牌会失效
   func_info?: {
-    funcscope_category: { id: number; type: number; name: string; desc: string }
+    funcscope_category: {
+      id: number
+      type?: number
+      name?: string
+      desc?: string
+    }
   }[] //授权给开发者的权限集列表
 }
 
@@ -14,48 +19,6 @@ export type AuthorizationInfo = {
  * @internal
  */
 export abstract class WxSpAuthorizer extends WxSpBase {
-  /**
-   * 获取预授权码
-   */
-  async createPreAuthCode() {
-    const componentAccessToken = (await this.ensureAccessToken()).accessToken
-    const result = await this.request({
-      method: 'post',
-      url: `component/api_create_preauthcode?component_access_token=${encodeURIComponent(
-        componentAccessToken
-      )}`,
-      ignoreAccessToken: true,
-      params: {
-        component_appid: this.componentAppid
-      }
-    })
-    return result as {
-      pre_auth_code: string
-      expires_in: number
-    }
-  }
-
-  /**
-   * 使用授权码获取授权信息
-   */
-  async getAuthInfo(authorization_code: string) {
-    const componentAccessToken = (await this.ensureAccessToken()).accessToken
-    const result = await this.request({
-      method: 'post',
-      url: `component/api_query_auth?component_access_token=${encodeURIComponent(
-        componentAccessToken
-      )}`,
-      ignoreAccessToken: true,
-      params: {
-        component_appid: this.componentAppid,
-        authorization_code: authorization_code
-      }
-    })
-    return result as {
-      authorization_info: AuthorizationInfo
-    }
-  }
-
   /**
    * 获取授权帐号调用令牌
    */
@@ -135,12 +98,12 @@ export abstract class WxSpAuthorizer extends WxSpBase {
         service_type_info: {
           //公众号/小程序类型
           id: number //类型id
-          name: string //	类型说明
+          name?: string //	类型说明
         }
         verify_type_info: {
           //公众号/小程序认证类型
           id: number //类型id
-          name: string //	类型说明
+          name?: string //	类型说明
         }
         user_name: string //原始ID
         alias?: string //公众号所设置的微信号，可能为空

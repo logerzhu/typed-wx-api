@@ -1,8 +1,12 @@
 import { TokenStorage } from '../../storage'
 import { applyMixins } from '../../utils'
-import { WxSpBase, WxSpTicket, WxSpAuthorizer } from './api'
+import { WxSpAuth, WxSpAuthorizer, WxSpBase, WxSpTicket } from './api'
 
-export interface WxSpAPI extends WxSpBase, WxSpTicket, WxSpAuthorizer {}
+export interface WxSpAPI
+  extends WxSpBase,
+    WxSpTicket,
+    WxSpAuthorizer,
+    WxSpAuth {}
 
 export class WxSpAPI extends WxSpBase {
   constructor(
@@ -18,4 +22,4 @@ export class WxSpAPI extends WxSpBase {
   }
 }
 
-applyMixins(WxSpAPI, [WxSpTicket, WxSpAuthorizer])
+applyMixins(WxSpAPI, [WxSpTicket, WxSpAuthorizer, WxSpAuth])
