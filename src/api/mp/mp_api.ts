@@ -30,9 +30,6 @@ export interface WxMpAPI
     WxMpMessage {}
 
 export class WxMpAPI extends WxMpBase {
-  readonly appid: string
-  readonly secret: string
-
   constructor(
     config: {
       appid: string
@@ -41,8 +38,6 @@ export class WxMpAPI extends WxMpBase {
     tokenStorage?: TokenStorage
   ) {
     super(config, tokenStorage)
-    this.appid = config.appid
-    this.secret = config.secret
   }
 }
 
