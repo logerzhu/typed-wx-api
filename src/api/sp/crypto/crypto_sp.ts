@@ -1,7 +1,13 @@
 import { WxCrypto } from '../../../crypto'
 import xml2js from 'xml2js'
 
-export interface WxSpEvents {}
+export type WxSpBaseInfoMessage<T> = {
+  AppId: string
+  CreateTime: string
+  InfoType: T
+}
+
+export interface WxSpInfoMessages {}
 
 export class WxSpCrypto {
   private readonly wxCrypto: WxCrypto
@@ -70,7 +76,24 @@ export class WxSpCrypto {
     return xmlObj
   }
 
-  async decryptXML(
+  async decryptInfoXML(
+    params: { msg_signature: string; timestamp: string; nonce: string },
+    xmlStr: string
+  ): Promise<
+    | { errMessage: string }
+    | {
+        errMessage: undefined
+        AppID: string
+        Decrypt: WxSpInfoMessages[keyof WxSpInfoMessages]
+      }
+  > {
+    return this.decryptXML<WxSpInfoMessages[keyof WxSpInfoMessages]>(
+      params,
+      xmlStr
+    )
+  }
+
+  async decryptXML<T>(
     params: { msg_signature: string; timestamp: string; nonce: string },
     xmlStr: string
   ) {
@@ -90,7 +113,7 @@ export class WxSpCrypto {
         AppID: event.AppId as string,
         Decrypt: this.formatXmlObj(
           (await xml2js.parseStringPromise(decryptInfo.message)).xml
-        ) as WxSpEvents[keyof WxSpEvents]
+        ) as T
       }
     } else {
       return decryptInfo
