@@ -1,7 +1,5 @@
-export * from './work'
 export * from './utils'
 export * from './crypto'
 export * from './errors'
-export * from './weixin'
 export * from './storage'
 export * from './api'
