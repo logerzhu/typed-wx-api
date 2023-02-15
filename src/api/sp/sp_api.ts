@@ -1,4 +1,4 @@
-import { TokenStorage } from '../../storage'
+import { TicketStorage, TokenStorage } from '../../storage'
 import { applyMixins } from '../../utils'
 import { WxSpAuth, WxSpAuthorizer, WxSpBase, WxSpTicket } from './api'
 
@@ -16,9 +16,10 @@ export class WxSpAPI extends WxSpBase {
       token: string
       encodingAESKey: string
     },
-    tokenStorage?: TokenStorage
+    tokenStorage?: TokenStorage,
+    ticketStorage?: TicketStorage
   ) {
-    super(config, tokenStorage)
+    super(config, tokenStorage, ticketStorage)
   }
 }
 
