@@ -135,8 +135,8 @@ export abstract class WxSpAuthorizer extends WxSpBase {
           is_phone_configured: boolean //是否已经绑定手机号
           is_email_configured: boolean //是否已经绑定邮箱，不绑定邮箱帐号的不可登录微信公众平台
         }
-        authorization_info: AuthorizationInfo
       }
+      authorization_info: AuthorizationInfo
     }
   }
 
