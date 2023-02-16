@@ -1,6 +1,30 @@
 import { WxSpBase } from './sp_base'
 import { AuthorizationInfo } from './sp_authorizer'
 import { URL } from 'url'
+import { WxSpBaseInfoMessage } from '../crypto/crypto_sp'
+
+//定义回调消息类型格式
+declare module '../crypto/crypto_sp' {
+  export interface WxSpInfoMessages {
+    authorized: WxSpBaseInfoMessage<'authorized'> & {
+      AuthorizerAppid: string
+      AuthorizationCode: string
+      AuthorizationCodeExpiredTime: string
+      PreAuthCode: string
+    }
+
+    unauthorized: WxSpBaseInfoMessage<'unauthorized'> & {
+      AuthorizerAppid: string
+    }
+
+    updateauthorized: WxSpBaseInfoMessage<'updateauthorized'> & {
+      AuthorizerAppid: string
+      AuthorizationCode: string
+      AuthorizationCodeExpiredTime: string
+      PreAuthCode: string
+    }
+  }
+}
 
 /**
  * @internal
@@ -89,7 +113,7 @@ export abstract class WxSpAuth extends WxSpBase {
     url.searchParams.append('component_appid', this.componentAppid)
     url.searchParams.append('pre_auth_code', preAuthCode)
     url.searchParams.append('redirect_uri', params.redirect_uri)
-    url.searchParams.append('auth_type', params.auth_type)
+    url.searchParams.append('auth_type', params.auth_type || '3')
     if (params.biz_appid) {
       url.searchParams.append('biz_appid', params.biz_appid)
     }
