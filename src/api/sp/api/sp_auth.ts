@@ -110,6 +110,10 @@ export abstract class WxSpAuth extends WxSpBase {
         ? 'https://mp.weixin.qq.com/cgi-bin/componentloginpage'
         : 'https://open.weixin.qq.com/wxaopen/safe/bindcomponent'
     )
+    if (params.scene == 'H5') {
+      url.searchParams.append('action', 'bindcomponent')
+      url.searchParams.append('no_scan', '1')
+    }
     url.searchParams.append('component_appid', this.componentAppid)
     url.searchParams.append('pre_auth_code', preAuthCode)
     url.searchParams.append('redirect_uri', params.redirect_uri)
@@ -120,6 +124,6 @@ export abstract class WxSpAuth extends WxSpBase {
     if (params.category_id_list) {
       url.searchParams.append('category_id_list', params.category_id_list)
     }
-    return url.href
+    return url.href + (params.scene == 'H5' ? '#wechat_redirect' : '')
   }
 }
