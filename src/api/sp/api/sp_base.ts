@@ -38,9 +38,9 @@ export abstract class WxSpBase extends API {
       data: {
         component_appid: this.componentAppid,
         component_appsecret: this.componentAppSecret,
-        component_verify_ticket: await this.ensureTicket(
-          'component_verify_ticket'
-        )
+        component_verify_ticket: (
+          await this.ensureTicket('component_verify_ticket')
+        ).ticket
       },
       ignoreAccessToken: true
     })
