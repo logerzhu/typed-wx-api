@@ -79,7 +79,7 @@ export abstract class WxSpAuthorizer extends WxSpBase {
   async getAuthorizerInfo(authorizer_appid: string) {
     const result = await this.request({
       method: 'post',
-      url: `component/api_get_authorizer_list`,
+      url: `component/api_get_authorizer_info`,
       data: {
         component_appid: this.componentAppid,
         authorizer_appid: authorizer_appid
