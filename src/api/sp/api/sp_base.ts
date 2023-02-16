@@ -33,8 +33,9 @@ export abstract class WxSpBase extends API {
 
   async resolveAccessToken() {
     const result = await this.request({
+      method: 'post',
       url: 'component/api_component_token',
-      params: {
+      data: {
         component_appid: this.componentAppid,
         component_appsecret: this.componentAppSecret,
         component_verify_ticket: await this.ensureTicket(

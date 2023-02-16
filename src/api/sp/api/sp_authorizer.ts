@@ -29,11 +29,12 @@ export abstract class WxSpAuthorizer extends WxSpBase {
     const componentAccessToken = (await this.ensureAccessToken()).accessToken
     const result = await this.request({
       method: 'post',
-      url: `component/api_authorizer_token?component_access_token=${encodeURIComponent(
-        componentAccessToken
-      )}`,
+      url: `component/api_authorizer_token`,
       ignoreAccessToken: true,
       params: {
+        component_access_token: componentAccessToken
+      },
+      data: {
         component_appid: this.componentAppid,
         authorizer_appid: params.authorizer_appid,
         authorizer_refresh_token: params.authorizer_refresh_token
@@ -55,11 +56,8 @@ export abstract class WxSpAuthorizer extends WxSpBase {
     const componentAccessToken = (await this.ensureAccessToken()).accessToken
     const result = await this.request({
       method: 'post',
-      url: `component/api_get_authorizer_list?access_token=${encodeURIComponent(
-        componentAccessToken
-      )}`,
-      ignoreAccessToken: true,
-      params: {
+      url: `component/api_get_authorizer_list`,
+      data: {
         component_appid: this.componentAppid,
         offset: params.offset,
         count: params.count
@@ -79,14 +77,10 @@ export abstract class WxSpAuthorizer extends WxSpBase {
    * 获取授权帐号详情
    */
   async getAuthorizerInfo(authorizer_appid: string) {
-    const componentAccessToken = (await this.ensureAccessToken()).accessToken
     const result = await this.request({
       method: 'post',
-      url: `component/api_get_authorizer_list?access_token=${encodeURIComponent(
-        componentAccessToken
-      )}`,
-      ignoreAccessToken: true,
-      params: {
+      url: `component/api_get_authorizer_list`,
+      data: {
         component_appid: this.componentAppid,
         authorizer_appid: authorizer_appid
       }
@@ -167,14 +161,10 @@ export abstract class WxSpAuthorizer extends WxSpBase {
           value: '0' | '1' //0:关闭多客服, 1:	开启多客服
         }
   ) {
-    const componentAccessToken = (await this.ensureAccessToken()).accessToken
     const result = await this.request({
       method: 'post',
-      url: `component/api_set_authorizer_option?access_token=${encodeURIComponent(
-        componentAccessToken
-      )}`,
-      ignoreAccessToken: true,
-      params: {
+      url: `component/api_set_authorizer_option`,
+      data: {
         component_appid: this.componentAppid,
         authorizer_appid: authorizer_appid,
         option_name: option.name,
@@ -193,14 +183,10 @@ export abstract class WxSpAuthorizer extends WxSpBase {
     authorizer_appid: string,
     option_name: 'location_report' | 'voice_recognize' | 'customer_service'
   ) {
-    const componentAccessToken = (await this.ensureAccessToken()).accessToken
     const result = await this.request({
       method: 'post',
-      url: `component/api_get_authorizer_option?access_token=${encodeURIComponent(
-        componentAccessToken
-      )}`,
-      ignoreAccessToken: true,
-      params: {
+      url: `component/api_get_authorizer_option`,
+      data: {
         component_appid: this.componentAppid,
         authorizer_appid: authorizer_appid,
         option_name: option_name

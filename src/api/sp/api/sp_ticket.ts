@@ -22,7 +22,7 @@ export abstract class WxSpTicket extends WxSpBase {
       method: 'post',
       url: 'component/api_start_push_ticket',
       ignoreAccessToken: true,
-      params: {
+      data: {
         component_appid: this.componentAppid,
         component_secret: this.componentAppSecret
       }

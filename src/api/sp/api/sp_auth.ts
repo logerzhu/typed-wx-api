@@ -13,11 +13,12 @@ export abstract class WxSpAuth extends WxSpBase {
     const componentAccessToken = (await this.ensureAccessToken()).accessToken
     const result = await this.request({
       method: 'post',
-      url: `component/api_create_preauthcode?component_access_token=${encodeURIComponent(
-        componentAccessToken
-      )}`,
+      url: `component/api_create_preauthcode`,
       ignoreAccessToken: true,
       params: {
+        component_access_token: componentAccessToken
+      },
+      data: {
         component_appid: this.componentAppid
       }
     })
@@ -34,11 +35,12 @@ export abstract class WxSpAuth extends WxSpBase {
     const componentAccessToken = (await this.ensureAccessToken()).accessToken
     const result = await this.request({
       method: 'post',
-      url: `component/api_query_auth?component_access_token=${encodeURIComponent(
-        componentAccessToken
-      )}`,
+      url: `component/api_query_auth`,
       ignoreAccessToken: true,
       params: {
+        component_access_token: componentAccessToken
+      },
+      data: {
         component_appid: this.componentAppid,
         authorization_code: authorization_code
       }
